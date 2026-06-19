@@ -1,0 +1,25 @@
+# Dependencias
+node_modules/
+
+# Builds e pacotes
+dist/
+build/
+*.zip
+
+# Ambiente local
+.env
+.env.*
+!.env.example
+
+# Sistema e editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
