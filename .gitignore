@@ -10,6 +10,7 @@ build/
 .env
 .env.*
 !.env.example
+docs/PRD.md
 
 # Sistema e editores
 .DS_Store
