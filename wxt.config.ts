@@ -8,6 +8,7 @@ export default defineConfig({
     name: "Copia e Cola",
     description: "Clipboard local-first por site para textos reutilizáveis.",
     permissions: ["activeTab", "storage"],
+    host_permissions: ["<all_urls>"],
     icons: {
       "16": "/assets/icons/icon-16.png",
       "32": "/assets/icons/icon-32.png",
