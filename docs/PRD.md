@@ -10,9 +10,14 @@ Este PRD descreve a tese do produto e o recorte do MVP local. Decisões formais 
 
 ## 1. Resumo
 
-Copia e Cola é um micro SaaS open-source e local-first para guardar textos reutilizáveis por contexto de navegação. O primeiro produto será uma extensão de navegador que mostra, salva e copia itens associados ao domínio atual.
+Copia e Cola é um software de produtividade open-source e local-first para guardar textos, snippets de código, prompts, protocolos e modelos de resposta por contexto de navegação. O primeiro produto será uma extensão de navegador que mostra, salva e copia itens associados ao domínio atual.
 
-O produto nasce como ferramenta simples para operações brasileiras que vivem alternando entre WhatsApp Web, tribunais, CRMs, portais públicos, ferramentas internas e IA. O valor inicial não está em automação complexa, mas em reduzir o retrabalho de buscar, reescrever ou copiar textos de lugares improvisados.
+O produto nasce como ferramenta simples para pessoas que vivem alternando entre sistemas e repetindo texto com pequenas variações. O valor inicial não está em automação complexa, mas em reduzir o retrabalho de buscar, reescrever ou copiar textos de lugares improvisados.
+
+Existem dois caminhos de adoção relevantes desde o início:
+
+- operador brasileiro que alterna entre WhatsApp Web, tribunais, CRMs, portais públicos e ferramentas internas;
+- usuário tech que alterna entre IDE, GitHub, documentação, chats de IA, prompts personalizados, snippets de código, comandos e respostas técnicas recorrentes.
 
 ## 2. Problema
 
@@ -26,7 +31,19 @@ Profissionais operacionais repetem pequenos textos e dados durante o dia:
 - trechos de documentação interna;
 - respostas recorrentes em portais, CRMs e WhatsApp Web.
 
+Usuários tech também repetem blocos reutilizáveis durante o dia:
+
+- snippets de código;
+- prompts personalizados;
+- comandos de terminal;
+- templates de PR, issue, commit e review;
+- respostas técnicas recorrentes;
+- instruções para agentes de IA;
+- trechos de documentação e exemplos.
+
 Hoje isso costuma ficar espalhado em bloco de notas, mensagens para si mesmo, planilhas, documentos, favoritos, histórico de clipboard ou memória individual. O problema aumenta quando o contexto muda: o que serve para um tribunal não serve para outro, e o que serve para WhatsApp não serve para um CRM.
+
+No caso tech, o mesmo problema aparece entre IDE, GitHub, ChatGPT/Claude, documentação, terminal e ferramentas internas. O usuário sabe o que quer reutilizar, mas perde tempo procurando a versão certa, adaptando o texto e conferindo se colou no contexto correto.
 
 ## 3. Hipótese
 
@@ -51,6 +68,10 @@ Hipótese principal do MVP:
 ### Usuário secundário
 
 - usuário intensivo de IA;
+- desenvolvedor;
+- founder técnico;
+- analista técnico;
+- prompt engineer ou usuário avançado de LLM;
 - fundador técnico;
 - analista de suporte;
 - vendedor consultivo;
@@ -60,11 +81,11 @@ Hipótese principal do MVP:
 
 ### Frase curta
 
-O copia e cola certo aparece no site certo.
+O texto certo aparece no contexto certo.
 
 ### Promessa do MVP
 
-Salvar, organizar e copiar textos reutilizáveis por domínio, sem conta, sem backend obrigatório e com dados locais por padrão.
+Salvar, organizar e reutilizar textos, prompts e snippets por domínio, sem conta, sem backend obrigatório e com dados locais por padrão.
 
 ## 6. Escopo do MVP
 

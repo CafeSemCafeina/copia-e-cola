@@ -8,7 +8,12 @@ Status: accepted
 
 ## Contexto
 
-O Copia e Cola precisa funcionar como core open-source local-first e, ao mesmo tempo, permitir uma operacao oficial paga com sync, produtividade avancada e IA. A separacao precisa preservar confianca: usar ou sincronizar snippets nao deve implicar envio automatico de texto para IA.
+O Copia e Cola precisa funcionar como software de produtividade open-source local-first e, ao mesmo tempo, permitir uma operacao oficial paga com sync, produtividade avancada e IA. A separacao precisa preservar confianca: usar ou sincronizar snippets nao deve implicar envio automatico de texto para IA.
+
+O produto deve atender dois caminhos reais de cliente:
+
+- usuario operacional que reutiliza textos em WhatsApp Web, CRMs, portais, atendimento e rotinas administrativas;
+- usuario tech que reutiliza snippets de codigo, prompts personalizados, comandos, templates de PR/issue/review e instrucoes para agentes de IA.
 
 ## Decisao
 
@@ -26,6 +31,7 @@ Inclui:
 - busca local;
 - copiar, editar, fixar e excluir;
 - exportacao/importacao JSON;
+- snippets de codigo e prompts personalizados como casos de uso nativos;
 - personalizacao via codigo.
 
 Papel no negocio:
@@ -45,13 +51,15 @@ Inclui:
 - sync entre dispositivos;
 - backup automatico;
 - recursos core;
-- limites de snippets e contextos;
+- snippets e dominios liberados para uso individual razoavel;
+- uso operacional e tech no mesmo core: textos, prompts, comandos e snippets de codigo;
 - sem IA.
 
-Limite inicial sugerido:
+Regra de produto:
 
-- 30 snippets;
-- 5 contextos ou dominios salvos;
+- Free Cloud nao deve empurrar o usuario para Pro por limite artificial de snippets ou dominios;
+- Pro deve ser comprado porque resolve outra dor, nao porque o core ficou travado;
+- limites tecnicos podem existir apenas como protecao antiabuso, sem aparecer como proposta comercial;
 - sem compartilhamento de equipe.
 
 ### Pro
@@ -60,13 +68,13 @@ Plano pago sem IA, focado em produtividade e organizacao.
 
 Inclui:
 
-- limite alto ou snippets ilimitados;
 - colecoes/pastas;
 - atalhos e expansao por comandos curtos;
 - variaveis manuais, como `{nome}`, `{data}`, `{processo}`;
 - modelos com campos preenchiveis;
 - historico/versionamento;
 - regras por dominio ou URL;
+- bibliotecas separadas por area, como atendimento, juridico, dev, prompts e suporte;
 - bot de WhatsApp para salvar notas/snippets, se o custo operacional fechar.
 
 Preco inicial sugerido:
@@ -83,6 +91,7 @@ Inclui:
 
 - slash commands para prompts salvos;
 - comandos como `/resumir`, `/reformular`, `/followup` e `/checklist`;
+- comandos tech como `/commit`, `/review`, `/bug-report`, `/prompt-refine` e `/explain-code`;
 - prompts contextuais por site;
 - workflows agenticos;
 - integracoes basicas de produtividade;
@@ -129,6 +138,8 @@ Ancora sugerida: R$ 119 por usuario/mes.
 ## Consequencias
 
 - A versao gratuita local continua forte como prova de confianca.
-- O plano Pro pode monetizar sem custo variavel alto de IA.
+- O Free Cloud tambem deve ser forte: login, sync e core completo para uso individual.
+- O plano Pro deve monetizar dores diferentes, como organizacao avancada, automacao sem IA, templates, historico, bibliotecas por area, WhatsApp bot e fluxos de produtividade.
 - A camada AI tem preco maior e limites claros por custo operacional.
+- O usuario tech e prompt-heavy deve ser tratado como ICP real, nao como caso marginal.
 - O repo publico continua sendo portfolio e core auditavel, sem expor a operacao oficial.
