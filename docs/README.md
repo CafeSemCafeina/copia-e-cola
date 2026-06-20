@@ -31,7 +31,7 @@ ADRs atuais:
 
 - `adr/0001-open-core-and-cloud-boundary.md`: separa core publico MIT de cloud privado.
 - `adr/0002-brand-assets-read-only.md`: define marca/assets como portfolio read-only, nao como parte livre da MIT.
-- `adr/0003-product-packaging-and-pricing.md`: define planos Open Source Local, Free Cloud, Pro, AI e diretrizes de pricing.
+- `adr/0003-product-packaging-and-pricing.md`: define planos Open Source Local, Essencial, Fluxo, Aceleracao, Operacao e diretrizes de pricing.
 - `adr/0004-stripe-offer-and-checkout-flow.md`: define pagina de ofertas e fluxo Stripe.
 - `adr/0005-agent-worktree-isolation.md`: define um worktree Git por spec/tarefa/agent para evitar interferencia entre contextos paralelos.
 
@@ -40,6 +40,7 @@ ADRs atuais:
 - `publication.md`: como publicar landing page e extensao.
 - `validation-checklist.md`: checklist manual e automatizado de QA.
 - `repository-boundaries.md`: mapa operacional do que fica publico MIT, publico read-only e privado.
+- `design-prompts/`: prompts prontos para gerar telas no Claude Design com base no design system.
 
 ## Historico
 

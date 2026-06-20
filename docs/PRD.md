@@ -219,7 +219,7 @@ Qualquer recurso que envie dados para fora do navegador deve ser:
 
 ### Fase 0.4 - Monetização leve
 
-As decisões de empacotamento, pricing e separação entre Open Source Local, Free Cloud, Pro e AI ficam em `docs/adr/0003-product-packaging-and-pricing.md`.
+As decisões de empacotamento, pricing e separação entre Open Source Local, Essencial, Fluxo, Aceleracao e Operacao ficam em `docs/adr/0003-product-packaging-and-pricing.md`.
 
 Regra do PRD:
 

@@ -4,7 +4,7 @@ Data da decisão: 2026-06-20
 Depends on: docs/adr/0003-product-packaging-and-pricing.md; docs/repository-boundaries.md
 Decisor: David Fiocchi
 
-Referencias visuais para oferta, checkout e sucesso do Copia e Cola Pro.
+Referencias visuais para oferta, checkout e sucesso do plano Fluxo. A tela original do pacote usava o nome Pro, que foi substituido por Fluxo na decisao comercial atual.
 
 ## Origem
 
@@ -14,7 +14,7 @@ Fonte local importada:
 
 O ZIP foi descompactado em uma pasta temporaria, comparado com o design system versionado e depois removido. O pacote trazia:
 
-- `Checkout Copia e Cola Pro.dc.html`;
+- `Checkout Copia e Cola Pro.dc.html`, nome original do pacote antes da decisao de renomear o plano para Fluxo;
 - `support.js`;
 - assets de marca;
 - `_ds/` com tokens, bundle e manifesto.
