@@ -1,7 +1,7 @@
 # Documentacao
 
 Data da decisão: 2026-06-20
-Depends on: docs/adr/0001-open-core-and-cloud-boundary.md; docs/adr/0002-brand-assets-read-only.md; docs/adr/0003-product-packaging-and-pricing.md
+Depends on: docs/adr/0001-open-core-and-cloud-boundary.md; docs/adr/0002-brand-assets-read-only.md; docs/adr/0003-product-packaging-and-pricing.md; docs/adr/0004-stripe-offer-and-checkout-flow.md; docs/adr/0005-agent-worktree-isolation.md
 Decisor: David Fiocchi
 
 Esta pasta separa produto, decisoes, validacao e historico.
@@ -33,6 +33,7 @@ ADRs atuais:
 - `adr/0002-brand-assets-read-only.md`: define marca/assets como portfolio read-only, nao como parte livre da MIT.
 - `adr/0003-product-packaging-and-pricing.md`: define planos Open Source Local, Free Cloud, Pro, AI e diretrizes de pricing.
 - `adr/0004-stripe-offer-and-checkout-flow.md`: define pagina de ofertas e fluxo Stripe.
+- `adr/0005-agent-worktree-isolation.md`: define um worktree Git por spec/tarefa/agent para evitar interferencia entre contextos paralelos.
 
 ## Operacao
 
