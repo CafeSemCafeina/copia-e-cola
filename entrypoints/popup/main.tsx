@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { buildExport, mergeImportedItems, parseImportPayload } from "../../src/lib/backup";
 import { domainFromUrl } from "../../src/lib/domain";
 import { designFixtureItems, useDesignFixture } from "../../src/fixtures/design";
+import { suggestCommandTrigger } from "../../src/lib/slash-commands";
 import * as storage from "../../src/lib/storage";
 import type { ClipboardItem } from "../../src/types";
 import {
@@ -46,6 +47,9 @@ function App() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [globalItem, setGlobalItem] = useState(false);
+  const [commandEnabled, setCommandEnabled] = useState(false);
+  const [commandTrigger, setCommandTrigger] = useState("");
+  const [commandError, setCommandError] = useState("");
   const [toast, setToast] = useState("");
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [pendingDelete, setPendingDelete] = useState<ClipboardItem | null>(null);
@@ -93,6 +97,9 @@ function App() {
     setTitle(item?.title || "");
     setContent(item?.content || "");
     setGlobalItem(item?.scope === "global");
+    setCommandEnabled(Boolean(item?.commandEnabled));
+    setCommandTrigger(item?.commandTrigger || "");
+    setCommandError("");
     setComposerOpen(true);
   }
 
@@ -101,7 +108,18 @@ function App() {
     setTitle("");
     setContent("");
     setGlobalItem(false);
+    setCommandEnabled(false);
+    setCommandTrigger("");
+    setCommandError("");
     setComposerOpen(false);
+  }
+
+  function toggleCommandMode(checked: boolean) {
+    setCommandEnabled(checked);
+    setCommandError("");
+    if (checked && !commandTrigger.trim()) {
+      setCommandTrigger(suggestCommandTrigger(title || storage.makeTitle(content)));
+    }
   }
 
   async function submit(event: React.FormEvent) {
@@ -112,16 +130,24 @@ function App() {
     }
 
     const scope = globalItem ? "global" : "domain";
-    await storage.upsertItem({
-      id: editing?.id,
-      scope,
-      domain: scope === "domain" ? currentDomain : null,
-      title,
-      content
-    });
-    closeComposer();
-    await refresh();
-    showToast(editing ? "Alterações salvas." : "Item salvo.");
+    try {
+      await storage.upsertItem({
+        id: editing?.id,
+        scope,
+        domain: scope === "domain" ? currentDomain : null,
+        title,
+        content,
+        commandEnabled,
+        commandTrigger: commandEnabled ? commandTrigger : null
+      });
+      closeComposer();
+      await refresh();
+      showToast(editing ? "Alterações salvas." : "Item salvo.");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Nao foi possivel salvar.";
+      setCommandError(message);
+      showToast(message);
+    }
   }
 
   async function copyItem(item: ClipboardItem) {
@@ -212,6 +238,23 @@ function App() {
                     <label className="field"><span>Título</span><input id="title-input" value={title} maxLength={80} placeholder="Opcional, gerado do conteúdo" onChange={(event) => setTitle(event.currentTarget.value)} /></label>
                     <label className="field"><span>Conteúdo</span><textarea id="content-input" value={content} rows={4} maxLength={8000} required placeholder="Cole aqui o texto que você reutiliza" onChange={(event) => setContent(event.currentTarget.value)} /></label>
                     <label className="checkbox-row"><input id="global-input" type="checkbox" checked={globalItem} onChange={(event) => setGlobalItem(event.currentTarget.checked)} /><span>Disponível em todos os sites</span></label>
+                    <label className="checkbox-row command-toggle">
+                      <input id="command-enabled-input" type="checkbox" checked={commandEnabled} onChange={(event) => toggleCommandMode(event.currentTarget.checked)} />
+                      <span>Usar como comando</span>
+                      <span className="command-help" tabIndex={0}>?
+                        <span className="command-tooltip">Quando você digitar este comando em um campo de texto, ele será trocado pelo conteúdo salvo.</span>
+                      </span>
+                    </label>
+                    {commandEnabled ? (
+                      <label className="field">
+                        <span>Comando</span>
+                        <input id="command-trigger-input" value={commandTrigger} maxLength={60} placeholder="/meu-comando" onChange={(event) => {
+                          setCommandTrigger(event.currentTarget.value);
+                          setCommandError("");
+                        }} />
+                        {commandError ? <small className="field-error">{commandError}</small> : null}
+                      </label>
+                    ) : null}
                     <div className="composer__actions">
                       <Button id="save-button" variant="primary" type="submit" icon="check" fullWidth>{editing ? "Salvar alterações" : "Salvar"}</Button>
                       <Button id="cancel-edit-button" variant="ghost" onClick={closeComposer}>Cancelar</Button>

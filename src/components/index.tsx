@@ -243,6 +243,7 @@ export function ClipboardItemCard({ item, copied, onCopy, onFavorite, onEdit, on
         <div className="clipboard-item__topline">
           <span className="clipboard-item__title">{item.title}</span>
           {item.scope === "global" ? <Badge tone="global" icon="globe">Global</Badge> : null}
+          {item.commandEnabled && item.commandTrigger ? <Badge tone="amber" mono>{item.commandTrigger}</Badge> : null}
           <IconButton
             className="favorite-action"
             icon="pin"

@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { buildExport, mergeImportedItems, parseImportPayload } from "../../src/lib/backup";
 import { designFixtureItems, useDesignFixture } from "../../src/fixtures/design";
+import { suggestCommandTrigger } from "../../src/lib/slash-commands";
 import * as storage from "../../src/lib/storage";
 import type { ClipboardItem } from "../../src/types";
 import {
@@ -31,6 +32,9 @@ function App() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [globalItem, setGlobalItem] = useState(false);
+  const [commandEnabled, setCommandEnabled] = useState(false);
+  const [commandTrigger, setCommandTrigger] = useState("");
+  const [commandError, setCommandError] = useState("");
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   async function refresh() {
@@ -76,6 +80,9 @@ function App() {
     setTitle(item.title);
     setContent(item.content);
     setGlobalItem(item.scope === "global");
+    setCommandEnabled(Boolean(item.commandEnabled));
+    setCommandTrigger(item.commandTrigger || "");
+    setCommandError("");
   }
 
   function closeEditor() {
@@ -83,6 +90,17 @@ function App() {
     setTitle("");
     setContent("");
     setGlobalItem(false);
+    setCommandEnabled(false);
+    setCommandTrigger("");
+    setCommandError("");
+  }
+
+  function toggleCommandMode(checked: boolean) {
+    setCommandEnabled(checked);
+    setCommandError("");
+    if (checked && !commandTrigger.trim()) {
+      setCommandTrigger(suggestCommandTrigger(title || storage.makeTitle(content)));
+    }
   }
 
   async function submitEditor(event: React.FormEvent) {
@@ -90,16 +108,24 @@ function App() {
     if (!editing) return;
 
     const scope = globalItem ? "global" : "domain";
-    await storage.upsertItem({
-      id: editing.id,
-      scope,
-      domain: scope === "domain" ? editing.domain : null,
-      title,
-      content
-    });
-    closeEditor();
-    await refresh();
-    setStatus("Alterações salvas.");
+    try {
+      await storage.upsertItem({
+        id: editing.id,
+        scope,
+        domain: scope === "domain" ? editing.domain : null,
+        title,
+        content,
+        commandEnabled,
+        commandTrigger: commandEnabled ? commandTrigger : null
+      });
+      closeEditor();
+      await refresh();
+      setStatus("Alterações salvas.");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Nao foi possivel salvar.";
+      setCommandError(message);
+      setStatus(message);
+    }
   }
 
   async function copyItem(item: ClipboardItem) {
@@ -183,6 +209,23 @@ function App() {
               <label><span>Título</span><input id="title-input" value={title} maxLength={80} onChange={(event) => setTitle(event.currentTarget.value)} /></label>
               <label><span>Conteúdo</span><textarea id="content-input" rows={4} maxLength={8000} required value={content} onChange={(event) => setContent(event.currentTarget.value)} /></label>
               <label className="checkbox-row"><input id="global-input" type="checkbox" checked={globalItem} onChange={(event) => setGlobalItem(event.currentTarget.checked)} /><span>Item global</span></label>
+              <label className="checkbox-row command-toggle">
+                <input id="command-enabled-input" type="checkbox" checked={commandEnabled} onChange={(event) => toggleCommandMode(event.currentTarget.checked)} />
+                <span>Usar como comando</span>
+                <span className="command-help" tabIndex={0}>?
+                  <span className="command-tooltip">Quando você digitar este comando em um campo de texto, ele será trocado pelo conteúdo salvo.</span>
+                </span>
+              </label>
+              {commandEnabled ? (
+                <label>
+                  <span>Comando</span>
+                  <input id="command-trigger-input" value={commandTrigger} maxLength={60} placeholder="/meu-comando" onChange={(event) => {
+                    setCommandTrigger(event.currentTarget.value);
+                    setCommandError("");
+                  }} />
+                  {commandError ? <small className="field-error">{commandError}</small> : null}
+                </label>
+              ) : null}
               <div className="form-actions">
                 <Button variant="primary" icon="check" type="submit">Salvar alterações</Button>
                 <Button id="cancel-edit-button" variant="ghost" onClick={closeEditor}>Cancelar</Button>

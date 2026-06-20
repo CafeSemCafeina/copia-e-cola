@@ -331,6 +331,48 @@ body {
   font: var(--type-meta);
 }
 
+.command-toggle {
+  position: relative;
+}
+
+.command-help {
+  display: inline-grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--surface-sunken);
+  color: var(--text-muted);
+  cursor: help;
+  font: var(--type-meta);
+}
+
+.command-tooltip {
+  position: absolute;
+  z-index: 5;
+  top: 26px;
+  left: 0;
+  display: none;
+  width: 260px;
+  padding: 8px 10px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-md);
+  color: var(--text-body);
+  font: var(--type-meta);
+}
+
+.command-help:hover .command-tooltip,
+.command-help:focus .command-tooltip {
+  display: block;
+}
+
+.field-error {
+  color: var(--text-danger);
+  font: var(--type-meta);
+}
+
 .composer__actions,
 .backup-actions,
 .dialog__actions {
