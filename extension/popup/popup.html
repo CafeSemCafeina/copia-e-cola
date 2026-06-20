@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Copia e Cola</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup-shell">
+      <header class="domain-header">
+        <div class="brand-mark" aria-hidden="true">
+          <span class="brand-mark__back"></span>
+          <span class="brand-mark__front"></span>
+        </div>
+        <div class="domain-header__text">
+          <p class="eyebrow">Copia e Cola</p>
+          <h1 id="domain-title">Carregando</h1>
+        </div>
+        <button id="backup-toggle" class="icon-button" type="button" aria-label="Backup">...</button>
+      </header>
+
+      <section id="unsupported-state" class="notice notice--warning" hidden>
+        <strong>Página não suportada</strong>
+        <span>Abra a extensão em um site comum para salvar itens por domínio.</span>
+      </section>
+
+      <section id="app-content" class="app-content" hidden>
+        <form id="item-form" class="composer">
+          <input id="editing-id" type="hidden">
+          <label class="field">
+            <span>Título</span>
+            <input id="title-input" type="text" maxlength="80" placeholder="Opcional">
+          </label>
+          <label class="field">
+            <span>Conteúdo</span>
+            <textarea id="content-input" rows="4" maxlength="8000" required placeholder="Cole aqui o texto que você reutiliza"></textarea>
+          </label>
+          <label class="checkbox-row">
+            <input id="global-input" type="checkbox">
+            <span>Disponível em todos os sites</span>
+          </label>
+          <div class="composer__actions">
+            <button id="save-button" class="button button--primary" type="submit">Salvar</button>
+            <button id="cancel-edit-button" class="button button--ghost" type="button" hidden>Cancelar</button>
+          </div>
+        </form>
+
+        <label class="search-field">
+          <span class="sr-only">Buscar</span>
+          <input id="search-input" type="search" placeholder="Buscar por título ou conteúdo">
+        </label>
+
+        <section class="list-section">
+          <div class="section-label">
+            <span>Itens deste site</span>
+            <span id="domain-count">0</span>
+          </div>
+          <div id="domain-list" class="item-list"></div>
+        </section>
+
+        <section id="global-section" class="list-section" hidden>
+          <div class="section-label">
+            <span>Itens globais</span>
+            <span id="global-count">0</span>
+          </div>
+          <div id="global-list" class="item-list"></div>
+        </section>
+      </section>
+
+      <section id="backup-panel" class="backup-panel" hidden>
+        <p class="section-label"><span>Backup local</span></p>
+        <div class="backup-panel__actions">
+          <button id="export-button" class="button button--secondary" type="button">Exportar JSON</button>
+          <label class="button button--secondary file-button">
+            Importar JSON
+            <input id="import-input" type="file" accept="application/json,.json">
+          </label>
+        </div>
+      </section>
+
+      <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    </main>
+
+    <template id="item-template">
+      <article class="clipboard-item">
+        <button class="clipboard-item__copy" type="button">
+          <span class="clipboard-item__title"></span>
+          <span class="clipboard-item__content"></span>
+          <span class="clipboard-item__meta"></span>
+        </button>
+        <div class="clipboard-item__actions">
+          <button class="small-button favorite-action" type="button">Favoritar</button>
+          <button class="small-button edit-action" type="button">Editar</button>
+          <button class="small-button small-button--danger delete-action" type="button">Excluir</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="../lib/domain.js"></script>
+    <script src="../lib/storage.js"></script>
+    <script src="../lib/backup.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

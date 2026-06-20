@@ -1,6 +1,6 @@
 # Spec 005 - UX do popup
 
-Status: Planned
+Status: Done
 
 ## Objetivo
 

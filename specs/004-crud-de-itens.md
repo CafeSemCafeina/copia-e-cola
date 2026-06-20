@@ -1,6 +1,6 @@
 # Spec 004 - CRUD de itens
 
-Status: Planned
+Status: Done
 
 ## Objetivo
 

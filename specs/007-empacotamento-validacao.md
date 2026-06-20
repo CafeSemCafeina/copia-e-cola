@@ -1,6 +1,6 @@
 # Spec 007 - Empacotamento e validação
 
-Status: Planned
+Status: Done
 
 ## Objetivo
 

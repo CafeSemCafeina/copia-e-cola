@@ -26,7 +26,51 @@ O primeiro recorte deve ser uma extensão de navegador com:
 
 ## Status
 
-Projeto em bootstrap inicial.
+MVP local da extensão Manifest V3 implementado em `extension/`.
+
+## Instalação local da extensão
+
+1. Abra `chrome://extensions` no Chrome ou `edge://extensions` no Edge.
+2. Ative o modo desenvolvedor.
+3. Clique em "Carregar sem compactação".
+4. Selecione a pasta `extension/` deste repositório.
+5. Fixe a extensão na barra do navegador e abra o popup em qualquer site.
+
+O manifesto inicial solicita apenas `activeTab` e `storage`, que são usados para identificar o domínio da aba atual e validar o armazenamento local do MVP.
+
+## Uso
+
+- O topo mostra o domínio normalizado da aba ativa.
+- O formulário salva itens do site atual ou itens globais.
+- A lista permite buscar, copiar, editar, favoritar e excluir.
+- O painel de backup exporta e importa JSON local sem apagar dados atuais.
+
+Páginas internas do navegador, arquivos locais e `about:blank` mostram estado não suportado.
+
+## Desenvolvimento
+
+Requisitos: Node.js 20 ou superior.
+
+```powershell
+npm install
+npm run check
+```
+
+`npm run check` executa testes unitários e validações simples do pacote da extensão, incluindo Manifest V3, permissões mínimas, referências de arquivos e ausência de recursos remotos no popup.
+
+Para validar em navegador Chromium/Chrome real com extensão descompactada, rode:
+
+```powershell
+npm run chrome:smoke
+```
+
+Esse smoke test carrega a extensão em um perfil temporário, abre o popup pelo `chrome-extension://...` e valida fluxo básico: domínio `web.whatsapp.com`, salvar, persistir após reload, isolamento entre domínios e item global.
+
+O Chrome estável instalado pode bloquear flags de carregamento de extensão em automação. Quando isso acontece, o script usa um Chromium local compatível do Playwright, se disponível.
+
+## Validação manual
+
+O roteiro para teste em Chrome/Edge está em [docs/validation-checklist.md](docs/validation-checklist.md).
 
 ## Design system
 

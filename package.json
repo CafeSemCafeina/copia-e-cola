@@ -1,0 +1,20 @@
+{
+  "name": "copia-e-cola",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Extensão local-first para guardar textos reutilizáveis por domínio.",
+  "scripts": {
+    "test": "node --test",
+    "validate": "node scripts/validate-extension.mjs",
+    "chrome:smoke": "node scripts/chrome-smoke.mjs",
+    "check:all": "npm run check && npm run chrome:smoke",
+    "check": "npm run test && npm run validate"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "playwright-core": "^1.61.0"
+  }
+}

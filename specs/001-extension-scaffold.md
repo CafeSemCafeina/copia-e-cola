@@ -1,6 +1,6 @@
 # Spec 001 - Scaffold da extensão
 
-Status: Planned
+Status: Done
 
 ## Objetivo
 

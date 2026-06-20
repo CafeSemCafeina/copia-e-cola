@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Copia e Cola",
+  "description": "Clipboard local-first por site para textos reutilizáveis.",
+  "version": "0.1.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA89KYkyYjCqoNGnr8TQ/eM4Pcg4QrRyN+Hdv3jXl0CW3VDAk7SbbD1ZkKyVM90q+34OgPxALoizcrzwP1aCAnwusMKenlgu+ZiQKCuRxLvRAXVR6JKWGRf+VYm1/ZWwxmMZG1am2pOtPjVuxGWSDFszOZC00mOHGGv7vUagvs00ee4V0Oj5kgH4IV6HcWn6zSe244bBj2k+RHZtlUiiTqG8UcetvMpwIBp4LWG6gLiSC2VvrqbXlN/S+v3wy+ezhNQX9H5LXx1HDyR1Umm5Q78P5x4rADT3ygWPWxF/fHdufDBGeq249l1OHhZgEmOKiWUNkZVcrIf295ZQUcycx19QIDAQAB",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "action": {
+    "default_title": "Copia e Cola",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "32": "assets/icons/icon-32.png",
+      "48": "assets/icons/icon-48.png",
+      "128": "assets/icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
+}

@@ -1,6 +1,6 @@
 # Spec 002 - Contexto por domínio
 
-Status: Planned
+Status: Done
 
 ## Objetivo
 

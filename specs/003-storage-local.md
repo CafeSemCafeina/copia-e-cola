@@ -1,6 +1,6 @@
 # Spec 003 - Storage local
 
-Status: Planned
+Status: Done
 
 ## Objetivo
 

@@ -1,6 +1,6 @@
 # Spec 006 - Exportação e importação
 
-Status: Planned
+Status: Done
 
 ## Objetivo
 
