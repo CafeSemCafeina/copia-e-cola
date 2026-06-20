@@ -30,7 +30,24 @@ O primeiro recorte é uma extensão de navegador com:
 
 ## Status
 
-MVP local da extensão Manifest V3 migrado para React/WXT. A fonte publicável fica em `entrypoints/`, `src/` e `public/`; o build carregável pelo navegador é gerado em `dist/`. A pasta `extension/` permanece como legado de referência visual e funcional da versão vanilla.
+MVP local da extensão Manifest V3 migrado para React/WXT. A fonte publicável fica em `entrypoints/`, `src/` e `public/`; o build carregável pelo navegador é gerado em `dist/`.
+
+A versão vanilla antiga foi removida para evitar código morto. O histórico de produto, design e decisões fica preservado em `docs/`, `specs/`, `design-system/`, `store/` e `site/`.
+
+## Organização do repositório
+
+- `entrypoints/`: telas WXT/React publicáveis da extensão.
+- `src/`: core local open-source, componentes e estilos compartilhados.
+- `public/`: assets necessários para o build da extensão.
+- `tests/`: testes TypeScript do core local.
+- `scripts/`: validações e geração de assets publicáveis.
+- `docs/`: PRD, ADRs, política de empacotamento e documentação de publicação.
+- `specs/`: specs versionadas do MVP e evolução do produto.
+- `design-system/`: referência visual e decisões de UX para portfólio.
+- `store/`: materiais de Chrome Web Store para portfólio/publicação.
+- `site/`: landing page e política de privacidade pública.
+
+O backend cloud oficial, billing, sync, IA, prompts privados e infraestrutura devem viver fora deste repositório, no projeto privado `copia-e-cola-cloud`.
 
 ## Instalação local da extensão
 
@@ -112,3 +129,7 @@ Ali estao organizados tokens, guidelines, componentes JSX, assets de marca, UI k
 ## Licença
 
 Distribuído sob a licença MIT. Veja [LICENSE](LICENSE).
+
+O código é livre, mas a marca Copia e Cola não faz parte da licença de software. Veja [TRADEMARKS.md](TRADEMARKS.md).
+
+Assets de marca, screenshots, materiais de loja, design system, PRD, ADRs e specs ficam publicados como material de portfólio e documentação, mas não concedem direito de uso da marca nem dos assets oficiais em forks ou redistribuições.

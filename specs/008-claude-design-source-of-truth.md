@@ -17,7 +17,7 @@ Versionar a fonte visual completa gerada no Claude Design para que o produto rea
   - página de opções;
   - assets de Chrome Web Store;
   - copy da ficha.
-- Preservar `docs/zip-asset-map.md` como inventário do pacote local.
+- Preservar o inventário histórico do pacote local em `docs/archive/legacy-zip-asset-map.md`.
 
 ## Fora de escopo
 

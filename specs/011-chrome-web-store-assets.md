@@ -18,7 +18,7 @@ Organizar e gerar os materiais necessários para publicar a extensão na Chrome 
   - `store/icons/icon-32.png`;
   - `store/icons/icon-48.png`;
   - `store/icons/icon-128.png`.
-- Decidir se os ícones da loja devem substituir os de `extension/assets/icons/`.
+- Manter ícones runtime em `public/assets/icons/`, que entram no build em `dist/assets/icons/`.
 - Gerar screenshots PNG 1280x800 a partir do design:
   - `store/screenshots/contexto-por-site-1280x800.png`;
   - `store/screenshots/salvar-e-reutilizar-1280x800.png`;

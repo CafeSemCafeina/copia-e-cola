@@ -9,13 +9,14 @@
     "package": "wxt zip",
     "test": "tsx --test tests/*.test.ts",
     "validate": "node scripts/validate-extension.mjs",
+    "validate:boundaries": "node scripts/validate-repo-boundaries.mjs",
     "store:assets": "node scripts/generate-store-assets.mjs",
     "validate:publication": "node scripts/validate-publication-assets.mjs",
     "visual:snapshots": "node scripts/visual-snapshots.mjs",
     "chrome:smoke": "node scripts/chrome-smoke.mjs",
     "publish:ready": "npm run check && npm run chrome:smoke && npm run package",
     "check:all": "npm run publish:ready",
-    "check": "npm run test && npm run build && npm run validate && npm run validate:publication"
+    "check": "npm run test && npm run build && npm run validate && npm run validate:publication && npm run validate:boundaries"
   },
   "engines": {
     "node": ">=20"

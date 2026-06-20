@@ -10,12 +10,11 @@ Adicionar as páginas internas exigidas pelas telas do Claude Design: onboarding
 
 ### Welcome pós-instalação
 
-- Criar `extension/welcome/welcome.html`.
-- Criar `extension/welcome/welcome.css`.
-- Criar `extension/welcome/welcome.js` somente se houver interação real.
-- Criar `extension/background.js` com `chrome.runtime.onInstalled`.
-- Abrir `welcome/welcome.html` após instalação.
-- Declarar `background.service_worker` no `manifest.json`.
+- Criar `entrypoints/welcome/` como página React/WXT.
+- Criar estilos em `src/styles/welcome.css`.
+- Criar `entrypoints/background.ts` com `chrome.runtime.onInstalled`.
+- Abrir `welcome.html` após instalação no build gerado.
+- Declarar `background.service_worker` pelo WXT no Manifest V3 gerado.
 - Usar conteúdo do design:
   - `Tudo pronto para copiar menos e colar melhor`;
   - `Contexto por site`;
@@ -26,11 +25,10 @@ Adicionar as páginas internas exigidas pelas telas do Claude Design: onboarding
 
 ### Página de opções
 
-- Criar `extension/options/options.html`.
-- Criar `extension/options/options.css`.
-- Criar `extension/options/options.js`.
-- Declarar `options_page` no `manifest.json`.
-- Reusar `extension/lib/storage.js` e `extension/lib/backup.js`.
+- Criar `entrypoints/options/` como página React/WXT.
+- Criar estilos em `src/styles/options.css`.
+- Declarar `options_page` pelo WXT no Manifest V3 gerado.
+- Reusar `src/lib/storage.ts` e `src/lib/backup.ts`.
 - Implementar busca global em todos os itens.
 - Agrupar itens por domínio e por globais.
 - Implementar filtros:
