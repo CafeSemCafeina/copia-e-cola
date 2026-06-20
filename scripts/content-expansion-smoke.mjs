@@ -10,20 +10,41 @@ const extensionDir = resolve("dist");
 function browserCandidates() {
   const candidates = [
     process.env.CHROME_PATH,
+    process.env.CHROMIUM_PATH,
+    process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,
     "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
     "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
     join(process.env.LOCALAPPDATA || "", "Google\\Chrome\\Application\\chrome.exe"),
     "C:\\Program Files\\Google\\Chrome for Testing\\Application\\chrome.exe",
     "C:\\Program Files\\Chromium\\Application\\chrome.exe",
     "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
-    "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+    "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "/usr/bin/google-chrome",
+    "/usr/bin/google-chrome-stable",
+    "/usr/bin/chromium-browser",
+    "/usr/bin/chromium",
+    "/opt/google/chrome/chrome",
+    "/snap/bin/chromium",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "/Applications/Chromium.app/Contents/MacOS/Chromium"
   ].filter(Boolean);
 
-  const playwrightRoot = join(process.env.LOCALAPPDATA || "", "ms-playwright");
-  if (existsSync(playwrightRoot)) {
+  const playwrightRoots = [
+    join(process.env.LOCALAPPDATA || "", "ms-playwright"),
+    join(process.env.HOME || "", ".cache", "ms-playwright")
+  ].filter((root) => root.length > 0);
+
+  for (const playwrightRoot of playwrightRoots) {
+    if (!existsSync(playwrightRoot)) continue;
     for (const name of readdirSync(playwrightRoot).sort().reverse()) {
-      const exe = join(playwrightRoot, name, "chrome-win64", "chrome.exe");
-      if (existsSync(exe)) candidates.push(exe);
+      const executables = [
+        join(playwrightRoot, name, "chrome-win64", "chrome.exe"),
+        join(playwrightRoot, name, "chrome-linux", "chrome"),
+        join(playwrightRoot, name, "chrome-mac", "Chromium.app", "Contents", "MacOS", "Chromium")
+      ];
+      for (const executable of executables) {
+        if (existsSync(executable)) candidates.push(executable);
+      }
     }
   }
 
