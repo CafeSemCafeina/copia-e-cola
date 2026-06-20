@@ -35,8 +35,16 @@ Os arquivos ZIP permanecem como fonte local ignorada pelo Git. A versao navegave
 - `screens/telas-da-extensao.html`: exportacao visual das telas da extensao.
 - `screens/support.js`: suporte necessario para a tela exportada.
 
+A exportacao atual de `screens/telas-da-extensao.html` veio do pacote local `Extensão copia e cola.zip` e inclui a referencia completa para:
+
+- estados do popup: lista, vazio, novo item, edicao, busca, busca vazia, configuracoes, copiado, exclusao e importacao;
+- onboarding pos-instalacao;
+- pagina de opcoes;
+- assets da Chrome Web Store: icones, screenshots, tile pequeno, marquee e copy da ficha.
+
 ## Observacoes de implementacao
 
 - O design system foi extraido como referencia de produto, ainda sem app funcional no repositorio.
 - Os componentes estao em JSX e devem ser adaptados quando a stack da extensao for definida.
 - O MVP deve continuar respeitando os principios ja documentados: local-first, simples antes de inteligente e contexto por dominio.
+- A tela exportada e fonte visual, nao runtime de producao. A extensao final deve portar layout, tokens, textos e comportamentos para HTML/CSS/JS simples compatíveis com Manifest V3.

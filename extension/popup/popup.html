@@ -8,74 +8,140 @@
   </head>
   <body>
     <main class="popup-shell">
-      <header class="domain-header">
-        <div class="brand-mark" aria-hidden="true">
-          <span class="brand-mark__back"></span>
-          <span class="brand-mark__front"></span>
-        </div>
-        <div class="domain-header__text">
-          <p class="eyebrow">Copia e Cola</p>
-          <h1 id="domain-title">Carregando</h1>
-        </div>
-        <button id="backup-toggle" class="icon-button" type="button" aria-label="Backup">...</button>
-      </header>
-
-      <section id="unsupported-state" class="notice notice--warning" hidden>
-        <strong>Página não suportada</strong>
-        <span>Abra a extensão em um site comum para salvar itens por domínio.</span>
-      </section>
-
-      <section id="app-content" class="app-content" hidden>
-        <form id="item-form" class="composer">
-          <input id="editing-id" type="hidden">
-          <label class="field">
-            <span>Título</span>
-            <input id="title-input" type="text" maxlength="80" placeholder="Opcional">
-          </label>
-          <label class="field">
-            <span>Conteúdo</span>
-            <textarea id="content-input" rows="4" maxlength="8000" required placeholder="Cole aqui o texto que você reutiliza"></textarea>
-          </label>
-          <label class="checkbox-row">
-            <input id="global-input" type="checkbox">
-            <span>Disponível em todos os sites</span>
-          </label>
-          <div class="composer__actions">
-            <button id="save-button" class="button button--primary" type="submit">Salvar</button>
-            <button id="cancel-edit-button" class="button button--ghost" type="button" hidden>Cancelar</button>
+      <section id="list-view" class="view">
+        <header class="domain-header">
+          <div class="brand-mark" aria-hidden="true">
+            <span class="brand-mark__back"></span>
+            <span class="brand-mark__front"></span>
           </div>
-        </form>
-
-        <label class="search-field">
-          <span class="sr-only">Buscar</span>
-          <input id="search-input" type="search" placeholder="Buscar por título ou conteúdo">
-        </label>
-
-        <section class="list-section">
-          <div class="section-label">
-            <span>Itens deste site</span>
-            <span id="domain-count">0</span>
+          <div class="domain-header__text">
+            <p class="eyebrow">Copia e Cola</p>
+            <h1 id="domain-title">Carregando</h1>
+            <p id="domain-summary" class="domain-header__meta">Abrindo contexto</p>
           </div>
-          <div id="domain-list" class="item-list"></div>
+          <button id="settings-button" class="icon-button" type="button" aria-label="Configurações">•••</button>
+        </header>
+
+        <section id="unsupported-state" class="notice notice--warning" hidden>
+          <strong>Página não suportada</strong>
+          <span>Abra a extensão em um site comum para salvar itens por domínio.</span>
         </section>
 
-        <section id="global-section" class="list-section" hidden>
-          <div class="section-label">
-            <span>Itens globais</span>
-            <span id="global-count">0</span>
+        <section id="app-content" class="app-content" hidden>
+          <div class="top-stack">
+            <label class="search-field">
+              <span class="search-field__icon" aria-hidden="true">⌕</span>
+              <span class="sr-only">Buscar</span>
+              <input id="search-input" type="search" placeholder="Buscar por título ou conteúdo">
+              <button id="clear-search-button" class="clear-search-button" type="button" aria-label="Limpar busca" hidden>×</button>
+            </label>
+
+            <button id="open-composer-button" class="composer-trigger" type="button">
+              <span aria-hidden="true">+</span>
+              Novo item para este site
+            </button>
+
+            <form id="item-form" class="composer" hidden>
+              <input id="editing-id" type="hidden">
+              <label class="field">
+                <span>Título</span>
+                <input id="title-input" type="text" maxlength="80" placeholder="Opcional, gerado do conteúdo">
+              </label>
+              <label class="field">
+                <span>Conteúdo</span>
+                <textarea id="content-input" rows="4" maxlength="8000" required placeholder="Cole aqui o texto que você reutiliza"></textarea>
+              </label>
+              <label class="checkbox-row">
+                <input id="global-input" type="checkbox">
+                <span>Disponível em todos os sites</span>
+              </label>
+              <div class="composer__actions">
+                <button id="save-button" class="button button--primary" type="submit">Salvar</button>
+                <button id="cancel-edit-button" class="button button--ghost" type="button">Cancelar</button>
+              </div>
+            </form>
           </div>
-          <div id="global-list" class="item-list"></div>
+
+          <div id="results-state" class="results-state">
+            <section class="list-section">
+              <div class="section-label">
+                <span>Itens deste site</span>
+                <span id="domain-count">0</span>
+              </div>
+              <div id="domain-list" class="item-list"></div>
+            </section>
+
+            <section id="global-section" class="list-section" hidden>
+              <div class="section-label">
+                <span>Itens globais</span>
+                <span id="global-count">0</span>
+              </div>
+              <div id="global-list" class="item-list"></div>
+            </section>
+          </div>
         </section>
+
+        <footer class="popup-footer">
+          <span class="footer-lock" aria-hidden="true">▣</span>
+          <span>Salvo localmente neste navegador</span>
+          <button id="backup-toggle" type="button">Backup</button>
+        </footer>
       </section>
 
-      <section id="backup-panel" class="backup-panel" hidden>
-        <p class="section-label"><span>Backup local</span></p>
-        <div class="backup-panel__actions">
-          <button id="export-button" class="button button--secondary" type="button">Exportar JSON</button>
-          <label class="button button--secondary file-button">
-            Importar JSON
-            <input id="import-input" type="file" accept="application/json,.json">
-          </label>
+      <section id="settings-view" class="settings-view" hidden>
+        <header class="settings-header">
+          <button id="back-to-list-button" class="icon-button" type="button" aria-label="Voltar">‹</button>
+          <div>
+            <p class="eyebrow">Local-first</p>
+            <h2>Configurações</h2>
+          </div>
+        </header>
+
+        <div class="settings-body">
+          <section class="privacy-card">
+            <span class="privacy-card__icon" aria-hidden="true">✓</span>
+            <div>
+              <strong>Seus dados ficam neste navegador</strong>
+              <p>Nada é enviado para servidores. Use backup em JSON para levar seus itens para outro perfil.</p>
+            </div>
+          </section>
+
+          <section class="settings-section">
+            <div class="section-label">
+              <span>Backup</span>
+            </div>
+            <div class="backup-actions">
+              <button id="export-button" class="button button--secondary" type="button">Exportar JSON</button>
+              <label class="button button--secondary file-button">
+                Importar JSON
+                <input id="import-input" type="file" accept="application/json,.json">
+              </label>
+            </div>
+            <p id="import-summary" class="import-summary" hidden></p>
+          </section>
+
+          <dl class="settings-stats">
+            <div>
+              <dt>Itens salvos</dt>
+              <dd id="settings-total">0</dd>
+            </div>
+            <div>
+              <dt>Versão</dt>
+              <dd>v0.1.0</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="delete-dialog" class="dialog-backdrop" hidden>
+        <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="delete-title">
+          <p class="eyebrow">Confirmar exclusão</p>
+          <h2 id="delete-title">Excluir item?</h2>
+          <p id="delete-body">Essa ação remove apenas este texto salvo.</p>
+          <div class="dialog__actions">
+            <button id="cancel-delete-button" class="button button--ghost" type="button">Cancelar exclusão</button>
+            <button id="confirm-delete-button" class="button button--danger" type="button">Confirmar exclusão</button>
+          </div>
         </div>
       </section>
 
@@ -85,12 +151,15 @@
     <template id="item-template">
       <article class="clipboard-item">
         <button class="clipboard-item__copy" type="button">
-          <span class="clipboard-item__title"></span>
+          <span class="clipboard-item__topline">
+            <span class="clipboard-item__title"></span>
+            <span class="clipboard-item__scope"></span>
+          </span>
           <span class="clipboard-item__content"></span>
           <span class="clipboard-item__meta"></span>
         </button>
         <div class="clipboard-item__actions">
-          <button class="small-button favorite-action" type="button">Favoritar</button>
+          <button class="small-button favorite-action" type="button">Fixar</button>
           <button class="small-button edit-action" type="button">Editar</button>
           <button class="small-button small-button--danger delete-action" type="button">Excluir</button>
         </div>

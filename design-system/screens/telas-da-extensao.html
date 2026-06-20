@@ -3,20 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ext-resource-dependency" content="../_ds_bundle.js" data-resource-id="dsBundle">
 <script src="./support.js"></script>
 </head>
 <body>
+<template id="__bundler_thumbnail" data-bg-color="#1f8a5b">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect x="360" y="250" width="300" height="300" rx="56" fill="#ffffff" opacity="0.5"/>
+    <rect x="540" y="430" width="300" height="300" rx="56" fill="#ffffff"/>
+  </svg>
+</template>
 <x-dc>
 <helmet>
-  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/fonts.css">
-  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/colors.css">
-  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/typography.css">
-  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/spacing.css">
-  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/radii.css">
-  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/motion.css">
-  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/base.css">
-  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/styles.css">
-  <script src="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/_ds_bundle.js"></script>
+  <link rel="stylesheet" href="../tokens/fonts.css">
+  <link rel="stylesheet" href="../tokens/colors.css">
+  <link rel="stylesheet" href="../tokens/typography.css">
+  <link rel="stylesheet" href="../tokens/spacing.css">
+  <link rel="stylesheet" href="../tokens/radii.css">
+  <link rel="stylesheet" href="../tokens/motion.css">
+  <link rel="stylesheet" href="../tokens/base.css">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+  (function(){
+    var DSURL = (window.__resources && window.__resources.dsBundle) || "../_ds_bundle.js";
+    function go(){
+      if (typeof window.React === 'undefined' || !window.React || !window.React.createElement) { return setTimeout(go, 20); }
+      if (window.__dsBundleLoaded) return; window.__dsBundleLoaded = true;
+      var s = document.createElement('script'); s.src = DSURL; document.head.appendChild(s);
+    }
+    go();
+  })();
+  </script>
 </helmet>
 <div style="width:max-content; min-width:100%; min-height:100vh; box-sizing:border-box; padding:48px; background:#e7e5df; font-family:var(--font-ui);">
 
@@ -65,6 +82,18 @@
     </div>
   </div>
 
+  <div style="font:600 12px/1 var(--font-ui); letter-spacing:.06em; text-transform:uppercase; color:var(--text-brand); margin-bottom:16px;">Popup · confirmações e importação</div>
+  <div style="display:flex; gap:40px; align-items:flex-start; margin-bottom:48px;">
+    <div style="flex:none; width:360px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Excluir item (confirmação)</div>
+      <div>{{ screenDelete }}</div>
+    </div>
+    <div style="flex:none; width:360px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Importar JSON (conflitos)</div>
+      <div>{{ screenImport }}</div>
+    </div>
+  </div>
+
   <div style="font:600 12px/1 var(--font-ui); letter-spacing:.06em; text-transform:uppercase; color:var(--text-brand); margin-bottom:16px;">Aba de boas-vindas · pós-instalação</div>
   <div style="display:flex; gap:40px; align-items:flex-start; margin-bottom:48px;">
     <div style="flex:none; width:980px; display:flex; flex-direction:column; gap:10px;">
@@ -78,6 +107,54 @@
     <div style="flex:none; width:1080px; display:flex; flex-direction:column; gap:10px;">
       <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Opções (chrome://extensions › Opções)</div>
       <div style="border-radius:2px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.08); border:1px solid var(--border-hairline);">{{ screenOptions }}</div>
+    </div>
+  </div>
+
+  <div style="height:1px; background:var(--border-hairline); margin:48px 0 40px;"></div>
+  <div style="margin-bottom:8px; font:700 22px/1.1 var(--font-ui); letter-spacing:-0.01em; color:var(--text-strong);">Assets da Chrome Web Store</div>
+  <div style="margin-bottom:28px; font:400 14px/1.5 var(--font-ui); color:var(--text-muted); max-width:680px;">Prontos para a ficha de publicação: ícones do manifest, screenshots 1280×800, tile promocional e marquee, além do texto da ficha em PT-BR.</div>
+
+  <div style="font:600 12px/1 var(--font-ui); letter-spacing:.06em; text-transform:uppercase; color:var(--text-brand); margin-bottom:16px;">Ícones do manifest</div>
+  <div style="display:flex; gap:40px; align-items:flex-start; margin-bottom:44px;">
+    <div style="flex:none; display:inline-flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">icon 16 · 32 · 48 · 128</div>
+      <div>{{ iconsRow }}</div>
+    </div>
+  </div>
+
+  <div style="font:600 12px/1 var(--font-ui); letter-spacing:.06em; text-transform:uppercase; color:var(--text-brand); margin-bottom:16px;">Screenshots da loja · 1280×800</div>
+  <div style="display:flex; gap:40px; align-items:flex-start; margin-bottom:44px;">
+    <div style="flex:none; width:1280px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">01 — Contexto por site</div>
+      <div style="border-radius:2px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.08);">{{ storeShot1 }}</div>
+    </div>
+    <div style="flex:none; width:1280px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">02 — Salvar e reutilizar</div>
+      <div style="border-radius:2px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.08);">{{ storeShot2 }}</div>
+    </div>
+    <div style="flex:none; width:1280px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">03 — Local-first</div>
+      <div style="border-radius:2px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.08);">{{ storeShot3 }}</div>
+    </div>
+  </div>
+
+  <div style="font:600 12px/1 var(--font-ui); letter-spacing:.06em; text-transform:uppercase; color:var(--text-brand); margin-bottom:16px;">Tiles promocionais</div>
+  <div style="display:flex; gap:40px; align-items:flex-start; margin-bottom:44px;">
+    <div style="flex:none; width:440px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Pequeno · 440×280</div>
+      <div style="border-radius:2px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.08);">{{ promoSmall }}</div>
+    </div>
+    <div style="flex:none; width:1440px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Marquee · 1440×560</div>
+      <div style="border-radius:2px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.08);">{{ marquee }}</div>
+    </div>
+  </div>
+
+  <div style="font:600 12px/1 var(--font-ui); letter-spacing:.06em; text-transform:uppercase; color:var(--text-brand); margin-bottom:16px;">Texto da ficha · PT-BR</div>
+  <div style="display:flex; gap:40px; align-items:flex-start;">
+    <div style="flex:none; width:760px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Listing copy</div>
+      <div>{{ storeCopy }}</div>
     </div>
   </div>
 
@@ -98,20 +175,30 @@ class Component extends DCLogic {
     const h = React.createElement;
     const { DomainHeader, ClipboardItem, SearchInput, Input, Textarea, Button, IconButton, EmptyState, Toast, Badge, Icon } = DS;
     const noop = () => {};
+    const pinGlyph = (s, color, fill) => h('svg', { width: s, height: s, viewBox: '0 0 24 24', fill: fill || 'none', stroke: color || '#fff', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' },
+      h('path', { key: 'a', d: 'M12 17v5' }),
+      h('path', { key: 'b', d: 'M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z' }));
+    const pinMark = (copied) => h('span', { key: 'pin', style: { position: 'absolute', top: 10, right: 12, width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', background: copied ? 'var(--green-50)' : 'var(--surface-card)', zIndex: 3 } }, pinGlyph(15, 'var(--red-500)', 'rgba(207,65,55,0.16)'));
 
     // ---- data ----
     const domainItems = [
-      { id: 'd1', scope: 'domain', favorite: true, title: 'Saudação inicial', content: 'Olá! Tudo bem? Sou da equipe e já vou te ajudar por aqui. Pode me contar o que você precisa?', meta: 'Copiado há 2 dias' },
+      { id: 'd1', scope: 'domain', pinned: true, title: 'Saudação inicial', content: 'Olá! Tudo bem? Sou da equipe e já vou te ajudar por aqui. Pode me contar o que você precisa?', meta: 'Copiado há 2 dias' },
       { id: 'd2', scope: 'domain', title: 'Pedido de documentos', content: 'Para dar andamento, preciso de: RG, CPF e comprovante de residência atualizado. Pode enviar por aqui mesmo.', meta: 'Copiado há 5 dias' },
       { id: 'd3', scope: 'domain', title: 'Encerramento do atendimento', content: 'Fico à disposição! Qualquer dúvida, é só chamar por aqui. Tenha um ótimo dia.', meta: 'Criado há 1 semana' },
     ];
     const globalItems = [
       { id: 'g1', scope: 'global', title: 'Pedido de protocolo', content: 'Por gentileza, me informe o número de protocolo para que eu localize seu atendimento.', meta: 'Copiado há 1 semana' },
-      { id: 'g2', scope: 'global', favorite: true, title: 'Dados bancários — PIX', content: 'Chave PIX (CNPJ): 12.345.678/0001-90 — Banco 077. Confirme o envio para liberar o serviço.', meta: 'Copiado ontem' },
+      { id: 'g2', scope: 'global', pinned: true, title: 'Dados bancários — PIX', content: 'Chave PIX (CNPJ): 12.345.678/0001-90 — Banco 077. Confirme o envio para liberar o serviço.', meta: 'Copiado ontem' },
     ];
 
     // ---- small helpers ----
-    const item = (it) => h(ClipboardItem, { key: it.id, title: it.title, content: it.content, scope: it.scope, favorite: !!it.favorite, meta: it.meta, copied: !!it.copied, onCopy: noop, onEdit: noop, onDelete: noop, onToggleFavorite: noop });
+    const item = (it, extraStyle) => {
+      const st = (extraStyle && typeof extraStyle === 'object') ? extraStyle : undefined;
+      const card = h(ClipboardItem, { title: it.title, content: it.content, scope: it.scope, favorite: !!it.pinned, meta: it.meta, copied: !!it.copied, onCopy: noop, onEdit: noop, onDelete: noop, onToggleFavorite: noop, style: st });
+      return it.pinned
+        ? h('div', { key: it.id, style: { position: 'relative' } }, pinMark(!!it.copied), React.cloneElement(card, { key: 'c' }))
+        : React.cloneElement(card, { key: it.id });
+    };
     const col = (arr) => h('div', { style: { display: 'flex', flexDirection: 'column', gap: 8 } }, arr);
     const sectionLabel = (text, count) => h('div', { style: { display: 'flex', alignItems: 'center', gap: 6, padding: '4px 2px 2px' } },
       h('span', { key: 't', style: { font: 'var(--fw-bold) var(--text-2xs)/1 var(--font-ui)', letterSpacing: 'var(--ls-wide)', textTransform: 'uppercase', color: 'var(--text-muted)' } }, text),
@@ -258,14 +345,13 @@ class Component extends DCLogic {
 
     // ---- options / manager page ----
     const chip = (active, icon, label) => h('button', { key: label, type: 'button', style: { display: 'inline-flex', alignItems: 'center', gap: 6, height: 32, padding: '0 12px', borderRadius: 'var(--radius-pill)', cursor: 'pointer', border: '1px solid ' + (active ? 'var(--green-500)' : 'var(--border-default)'), background: active ? 'var(--green-50)' : 'var(--surface-card)', color: active ? 'var(--text-brand)' : 'var(--text-body)', font: 'var(--fw-semibold) 13px/1 var(--font-ui)' } },
-      icon ? h(Icon, { key: 'i', name: icon, size: 14 }) : null, label);
+      icon === 'pin' ? h('span', { key: 'i', style: { display: 'flex' } }, pinGlyph(14, 'var(--red-500)')) : (icon ? h(Icon, { key: 'i', name: icon, size: 14 }) : null), label);
 
-    const optItem = (it) => h(ClipboardItem, { key: it.id, title: it.title, content: it.content, scope: it.scope, favorite: !!it.favorite, meta: it.meta, onCopy: noop, onEdit: noop, onDelete: noop, onToggleFavorite: noop, style: { width: '100%' } });
     const domainBlock = (badge, count, arr) => h('div', { key: badge.label, style: { marginBottom: 24 } },
       h('div', { key: 'h', style: { display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 } },
         h(Badge, { key: 'b', tone: badge.tone, mono: badge.mono, icon: badge.icon }, badge.label),
         h('span', { key: 'c', style: { font: 'var(--type-meta)', color: 'var(--text-muted)' } }, count + (count === 1 ? ' item' : ' itens'))),
-      h('div', { key: 'g', style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 } }, arr.map(optItem)));
+      h('div', { key: 'g', style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 } }, arr.map((o) => item(o, { width: '100%' }))));
 
     const waItems = domainItems;
     const tjItems = [
@@ -279,7 +365,7 @@ class Component extends DCLogic {
         h('p', { key: 't', style: { margin: 0, font: '400 13px/1.5 var(--font-ui)', color: 'var(--text-brand)' } }, 'Seus dados ficam neste navegador. Faça um backup para levar para outro computador.')),
       h('div', { key: 's', style: { background: 'var(--surface-card)', border: '1px solid var(--border-hairline)', borderRadius: 'var(--radius-lg)', padding: 16, display: 'flex', flexDirection: 'column', gap: 10 } },
         h('div', { key: 'l', style: { font: 'var(--fw-bold) var(--text-2xs)/1 var(--font-ui)', letterSpacing: 'var(--ls-wide)', textTransform: 'uppercase', color: 'var(--text-muted)' } }, 'Resumo'),
-        ...[['Total de itens', '7'], ['Sites', '2'], ['Globais', '2'], ['Favoritos', '2']].map((r, i) => h('div', { key: i, style: { display: 'flex', justifyContent: 'space-between', font: '400 14px/1 var(--font-ui)', color: 'var(--text-body)' } }, h('span', { key: 'a' }, r[0]), h('span', { key: 'b', style: { font: 'var(--fw-semibold) 14px/1 var(--font-mono)', color: 'var(--text-strong)' } }, r[1])))));
+        ...[['Total de itens', '7'], ['Sites', '2'], ['Globais', '2'], ['Fixados', '2']].map((r, i) => h('div', { key: i, style: { display: 'flex', justifyContent: 'space-between', font: '400 14px/1 var(--font-ui)', color: 'var(--text-body)' } }, h('span', { key: 'a' }, r[0]), h('span', { key: 'b', style: { font: 'var(--fw-semibold) 14px/1 var(--font-mono)', color: 'var(--text-strong)' } }, r[1])))));
 
     const screenOptions = h('div', { style: { width: '100%', background: 'var(--surface-canvas)', display: 'flex', flexDirection: 'column', minHeight: 720 } },
       h('div', { key: 'bar', style: { display: 'flex', alignItems: 'center', gap: 16, padding: '14px 24px', background: 'var(--surface-card)', borderBottom: '1px solid var(--border-hairline)' } },
@@ -294,15 +380,163 @@ class Component extends DCLogic {
             h('h2', { key: 'h', style: { margin: 0, font: '700 22px/1.2 var(--font-ui)', letterSpacing: '-0.01em', color: 'var(--text-strong)' } }, 'Seus itens'),
             h('span', { key: 'c', style: { font: 'var(--type-meta)', color: 'var(--text-muted)' } }, '7 itens em 2 sites')),
           h('div', { key: 'chips', style: { display: 'flex', gap: 8, margin: '14px 0 22px', flexWrap: 'wrap' } },
-            chip(true, null, 'Todos'), chip(false, 'star', 'Favoritos'), chip(false, 'globe', 'Globais'), chip(false, 'filter', 'web.whatsapp.com'), chip(false, 'filter', 'portal.tjsp.jus.br')),
+            chip(true, null, 'Todos'), chip(false, 'pin', 'Fixados'), chip(false, 'globe', 'Globais'), chip(false, 'filter', 'web.whatsapp.com'), chip(false, 'filter', 'portal.tjsp.jus.br')),
           domainBlock({ label: 'web.whatsapp.com', tone: 'neutral', mono: true }, 3, waItems),
           domainBlock({ label: 'portal.tjsp.jus.br', tone: 'neutral', mono: true }, 2, tjItems),
           domainBlock({ label: 'Itens globais', tone: 'global', icon: 'globe' }, 2, globalItems)),
         sideCard));
 
-    return { screenList, screenEmpty, screenNew, screenEdit, screenSearch, screenSearchEmpty, screenSettings: settingsScreen, screenCopied, screenOnboarding, screenOptions };
+    // ===== extra popup states =====
+    const screenDelete = shell([
+      header(3),
+      topPad([h('div', { key: 's' }, search('')), h('div', { key: 'c' }, collapsedComposer)]),
+      listArea([h('div', { key: 'a' }, sectionLabel('Itens deste site', 3)), h('div', { key: 'b' }, col(domainItems.slice(0, 2).map(item)))]),
+      footer,
+      h('div', { key: 'ov', style: { position: 'absolute', inset: 0, background: 'rgba(28,27,23,0.38)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 18 } },
+        h('div', { key: 'd', style: { width: '100%', background: 'var(--surface-card)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)', padding: 16, display: 'flex', flexDirection: 'column', gap: 14 } },
+          h('div', { key: 'h', style: { display: 'flex', gap: 12, alignItems: 'flex-start' } },
+            h('span', { key: 'i', style: { display: 'flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38, borderRadius: 'var(--radius-md)', background: 'var(--red-50)', color: 'var(--danger)', flex: 'none' } }, h(Icon, { name: 'trash', size: 19 })),
+            h('div', { key: 't' },
+              h('div', { key: 'a', style: { font: 'var(--fw-semibold) 15px/1.3 var(--font-ui)', color: 'var(--text-strong)' } }, 'Excluir este item?'),
+              h('div', { key: 'b', style: { marginTop: 4, font: 'var(--type-body)', color: 'var(--text-muted)' } }, 'O item "Pedido de documentos" será removido deste navegador. Não dá para desfazer.'))),
+          h('div', { key: 'b', style: { display: 'flex', gap: 8, justifyContent: 'flex-end' } },
+            h(Button, { key: 'c', variant: 'ghost' }, 'Cancelar'),
+            h(Button, { key: 'd', variant: 'danger', icon: 'trash' }, 'Excluir')))),
+    ]);
+
+    // import JSON preview / conflict resolution
+    const impRow = (icon, tone, title, sub) => h('div', { key: title, style: { display: 'flex', gap: 10, alignItems: 'flex-start', padding: '10px 12px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-hairline)', background: 'var(--surface-card)' } },
+      h('span', { key: 'i', style: { display: 'flex', alignItems: 'center', justifyContent: 'center', width: 26, height: 26, borderRadius: 'var(--radius-sm)', flex: 'none', background: tone.bg, color: tone.fg } }, h(Icon, { name: icon, size: 14 })),
+      h('div', { key: 't', style: { flex: 1, minWidth: 0 } },
+        h('div', { key: 'a', style: { font: 'var(--fw-semibold) var(--text-sm)/1.3 var(--font-ui)', color: 'var(--text-strong)' } }, title),
+        h('div', { key: 'b', style: { marginTop: 2, font: 'var(--type-meta)', color: 'var(--text-muted)' } }, sub)));
+    const tnGreen = { bg: 'var(--green-50)', fg: 'var(--text-brand)' };
+    const tnAmber = { bg: 'var(--amber-50)', fg: 'var(--amber-600)' };
+    const screenImport = shell([
+      h('div', { key: 'bar', style: { display: 'flex', alignItems: 'center', gap: 8, padding: '10px 12px', borderBottom: '1px solid var(--border-hairline)', background: 'var(--surface-card)' } },
+        h(IconButton, { key: 'b', icon: 'arrow-left', label: 'Voltar' }),
+        h('span', { key: 't', style: { font: 'var(--type-heading)', color: 'var(--text-strong)' } }, 'Importar backup')),
+      h('div', { key: 'body', style: { padding: 14, display: 'flex', flexDirection: 'column', gap: 12, background: 'var(--surface-canvas)' } },
+        h('div', { key: 'f', style: { display: 'flex', alignItems: 'center', gap: 10, padding: 12, borderRadius: 'var(--radius-md)', border: '1px solid var(--border-hairline)', background: 'var(--surface-card)' } },
+          h(Icon, { key: 'i', name: 'inbox', size: 18, style: { color: 'var(--text-muted)' } }),
+          h('div', { key: 'd', style: { flex: 1, minWidth: 0 } },
+            h('div', { key: 'a', style: { font: 'var(--fw-semibold) var(--text-sm)/1 var(--font-ui)', color: 'var(--text-strong)' } }, 'copia-e-cola-backup.json'),
+            h('div', { key: 'b', style: { marginTop: 2, font: 'var(--type-meta)', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' } }, '24 itens · 18 KB')),
+          h(Badge, { key: 'bd', tone: 'brand', icon: 'check' }, 'Válido')),
+        h('div', { key: 'sec', style: { display: 'flex', flexDirection: 'column', gap: 8 } },
+          sectionLabel('O que será importado'),
+          impRow('plus', tnGreen, '19 itens novos', 'Serão adicionados ao seu acervo'),
+          impRow('check-circle', tnAmber, '5 já existem neste navegador', 'Conflito — escolha como resolver abaixo')),
+        h('div', { key: 'res', style: { display: 'flex', flexDirection: 'column', gap: 8 } },
+          sectionLabel('Itens em conflito'),
+          h('label', { key: 'r1', style: { display: 'flex', gap: 10, alignItems: 'flex-start', padding: '10px 12px', borderRadius: 'var(--radius-md)', border: '1.5px solid var(--green-500)', background: 'var(--green-50)', cursor: 'pointer' } },
+            h('span', { key: 'd', style: { width: 16, height: 16, borderRadius: 999, border: '5px solid var(--green-500)', background: '#fff', flex: 'none', marginTop: 1 } }),
+            h('span', { key: 't' }, h('div', { style: { font: 'var(--fw-semibold) var(--text-sm)/1.3 var(--font-ui)', color: 'var(--text-strong)' } }, 'Manter os meus'), h('div', { style: { font: 'var(--type-meta)', color: 'var(--text-brand)' } }, 'Ignora os 5 itens repetidos do arquivo'))),
+          h('label', { key: 'r2', style: { display: 'flex', gap: 10, alignItems: 'flex-start', padding: '10px 12px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-default)', background: 'var(--surface-card)', cursor: 'pointer' } },
+            h('span', { key: 'd', style: { width: 16, height: 16, borderRadius: 999, border: '1.5px solid var(--border-default)', background: '#fff', flex: 'none', marginTop: 1 } }),
+            h('span', { key: 't' }, h('div', { style: { font: 'var(--fw-semibold) var(--text-sm)/1.3 var(--font-ui)', color: 'var(--text-strong)' } }, 'Substituir pelos do arquivo'), h('div', { style: { font: 'var(--type-meta)', color: 'var(--text-muted)' } }, 'Sobrescreve com a versão importada')))),
+        h('div', { key: 'cta', style: { display: 'flex', gap: 8, paddingTop: 2 } },
+          h(Button, { key: 's', variant: 'primary', icon: 'check', style: { flex: 1 } }, 'Importar 19 itens'),
+          h(Button, { key: 'c', variant: 'ghost' }, 'Cancelar'))),
+    ]);
+
+    // ===== STORE ASSETS =====
+    const dot = (c) => h('span', { key: c, style: { width: 11, height: 11, borderRadius: 999, background: c, display: 'inline-block' } });
+    const browserScene = (domain, popup) => h('div', { style: { position: 'relative', width: 640, height: 472, borderRadius: 16, background: 'var(--surface-card)', boxShadow: 'var(--shadow-lg)', border: '1px solid var(--border-hairline)', overflow: 'hidden' } },
+      h('div', { key: 'c', style: { height: 46, display: 'flex', alignItems: 'center', gap: 14, padding: '0 16px', borderBottom: '1px solid var(--border-hairline)', background: 'var(--paper-50)' } },
+        h('div', { key: 'd', style: { display: 'flex', gap: 7 } }, dot('#e6685e'), dot('#e8b73f'), dot('#69b84b')),
+        h('div', { key: 'u', style: { flex: 1, height: 28, borderRadius: 999, background: 'var(--surface-card)', border: '1px solid var(--border-hairline)', display: 'flex', alignItems: 'center', gap: 7, padding: '0 12px' } },
+          h(Icon, { key: 'l', name: 'lock', size: 12, style: { color: 'var(--text-muted)' } }),
+          h('span', { key: 't', style: { font: '400 12px/1 var(--font-mono)', color: 'var(--text-body)' } }, domain)),
+        h('span', { key: 'p', style: { width: 28, height: 28, borderRadius: 'var(--radius-sm)', background: 'var(--green-50)', border: '1px solid var(--green-100)', display: 'flex', alignItems: 'center', justifyContent: 'center' } }, mark(14))),
+      h('div', { key: 's', style: { position: 'absolute', inset: '46px 0 0 0', background: 'var(--paper-50)' } },
+        h('div', { style: { padding: 26, display: 'flex', flexDirection: 'column', gap: 13, opacity: 0.45 } },
+          h('div', { key: 'h', style: { height: 16, width: 190, borderRadius: 6, background: 'var(--paper-300)' } }),
+          ...[300, 250, 290, 220].map((w, i) => h('div', { key: i, style: { height: 10, width: w, borderRadius: 5, background: 'var(--paper-200)' } })))),
+      h('div', { key: 'pop', style: { position: 'absolute', top: 56, right: 16 } }, popup));
+
+    const filledComposer = h('div', { style: { display: 'flex', flexDirection: 'column', gap: 10, padding: 12, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', background: 'var(--surface-card)', boxShadow: 'var(--shadow-sm)' } },
+      h(Input, { key: 'i', label: 'Título (opcional)', value: 'Pedido de documentos', onChange: noop }),
+      h(Textarea, { key: 't', label: 'Conteúdo', rows: 3, value: 'Para dar andamento, preciso de: RG, CPF e comprovante de residência atualizado.', onChange: noop }),
+      h('div', { key: 'b', style: { display: 'flex', gap: 8 } }, h(Button, { key: 's', variant: 'primary', icon: 'check', style: { flex: 1 } }, 'Salvar'), h(Button, { key: 'c', variant: 'ghost' }, 'Cancelar')));
+
+    const popList = shell([
+      header(3),
+      topPad([h('div', { key: 's' }, search('')), h('div', { key: 'c' }, collapsedComposer)]),
+      listArea([h('div', { key: 'a' }, sectionLabel('Itens deste site', 3)), h('div', { key: 'b' }, col(domainItems.slice(0, 2).map(item)))]),
+    ]);
+    const popComposer = shell([
+      header(2),
+      topPad([h('div', { key: 'c' }, filledComposer)]),
+      listArea([h('div', { key: 'a' }, sectionLabel('Itens deste site', 2)), h('div', { key: 'b' }, col([item(domainItems[1])]))]),
+    ]);
+
+    const tick = (txt) => h('div', { key: txt, style: { display: 'flex', alignItems: 'center', gap: 11 } },
+      h('span', { style: { display: 'flex', alignItems: 'center', justifyContent: 'center', width: 24, height: 24, borderRadius: 999, background: 'var(--green-50)', color: 'var(--text-brand)', flex: 'none' } }, h(Icon, { name: 'check', size: 14 })),
+      h('span', { style: { font: '400 16px/1.4 var(--font-ui)', color: 'var(--text-body)' } }, txt));
+
+    const shotBg = 'radial-gradient(110% 95% at 92% 8%, #e7f3ec 0%, rgba(231,243,236,0) 56%), var(--paper-50)';
+    const storeShot = (o) => h('div', { style: { width: 1280, height: 800, position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', background: shotBg, fontFamily: 'var(--font-ui)' } },
+      h('div', { key: 'l', style: { width: 548, flex: 'none', padding: '0 48px 0 88px', display: 'flex', flexDirection: 'column' } },
+        h('div', { key: 'b', style: { marginBottom: 28 } }, brandLockup(24)),
+        h('div', { key: 'e', style: { font: '700 13px/1 var(--font-ui)', letterSpacing: '0.09em', textTransform: 'uppercase', color: 'var(--text-brand)', marginBottom: 16 } }, o.eyebrow),
+        h('h2', { key: 'h', style: { margin: 0, font: '700 46px/1.07 var(--font-ui)', letterSpacing: '-0.026em', color: 'var(--text-strong)' } }, o.headline),
+        h('p', { key: 's', style: { margin: '18px 0 30px', font: '400 19px/1.5 var(--font-ui)', color: 'var(--text-muted)', maxWidth: 430 } }, o.sub),
+        h('div', { key: 't', style: { display: 'flex', flexDirection: 'column', gap: 13 } }, (o.ticks || []).map(tick))),
+      h('div', { key: 'r', style: { flex: 1, height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingRight: 36 } }, o.scene));
+
+    const storeShot1 = storeShot({ eyebrow: 'Contexto por site', headline: 'Cada site, só os textos certos', sub: 'Abra um site e veja apenas os snippets, protocolos e modelos salvos para aquele domínio.', ticks: ['Itens deste site separados dos globais', 'Busca por título ou conteúdo'], scene: browserScene('web.whatsapp.com', popList) });
+    const storeShot2 = storeShot({ eyebrow: 'Salve em segundos', headline: 'Cole uma vez. Reutilize sempre', sub: 'Cole o texto, dê um título opcional e salve. Da próxima vez, é um clique para copiar de volta.', ticks: ['Título gerado do conteúdo se vazio', 'Copiar, editar e excluir no próprio card'], scene: browserScene('portal.tjsp.jus.br', popComposer) });
+    const storeShot3 = storeShot({ eyebrow: 'Local-first · open-source', headline: 'Seus dados ficam no seu navegador', sub: 'Nada é enviado para servidores. Faça backup em JSON quando quiser levar para outro computador.', ticks: ['Exportar e importar em JSON', 'Código aberto, sem conta e sem nuvem'], scene: browserScene('crm.suaempresa.com', settingsScreen) });
+
+    // small promo tile 440x280
+    const promoSmall = h('div', { style: { width: 440, height: 280, position: 'relative', overflow: 'hidden', background: 'radial-gradient(130% 110% at 100% 0%, #e7f3ec 0%, rgba(231,243,236,0) 62%), var(--paper-50)', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 14, padding: '0 38px', fontFamily: 'var(--font-ui)' } },
+      h('div', { key: 'b', style: { marginBottom: 2 } }, brandLockup(26)),
+      h('div', { key: 't', style: { font: '700 26px/1.12 var(--font-ui)', letterSpacing: '-0.02em', color: 'var(--text-strong)', maxWidth: 340 } }, 'Sua área de transferência, por site'),
+      h('div', { key: 's', style: { font: '400 15px/1.45 var(--font-ui)', color: 'var(--text-muted)', maxWidth: 330 } }, 'Salve os textos que você repete e cole de volta com um clique.'),
+      h('div', { key: 'p', style: { display: 'flex', alignItems: 'center', gap: 7, font: '600 12px/1 var(--font-ui)', color: 'var(--text-brand)', marginTop: 2 } }, h(Icon, { key: 'i', name: 'shield-check', size: 14 }), 'Local-first · open-source'));
+
+    // marquee 1440x560
+    const marquee = h('div', { style: { width: 1440, height: 560, position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', background: 'radial-gradient(85% 130% at 82% 12%, #e7f3ec 0%, rgba(231,243,236,0) 56%), var(--paper-50)', fontFamily: 'var(--font-ui)' } },
+      h('div', { key: 'l', style: { width: 600, flex: 'none', padding: '0 40px 0 84px', display: 'flex', flexDirection: 'column' } },
+        h('div', { key: 'b', style: { marginBottom: 26 } }, brandLockup(26)),
+        h('div', { key: 'e', style: { font: '700 13px/1 var(--font-ui)', letterSpacing: '0.09em', textTransform: 'uppercase', color: 'var(--text-brand)', marginBottom: 16 } }, 'Extensão para Chrome'),
+        h('h2', { key: 'h', style: { margin: 0, font: '700 54px/1.05 var(--font-ui)', letterSpacing: '-0.028em', color: 'var(--text-strong)' } }, 'Copie menos. Cole melhor.'),
+        h('p', { key: 's', style: { margin: '20px 0 28px', font: '400 20px/1.5 var(--font-ui)', color: 'var(--text-muted)', maxWidth: 460 } }, 'O clipboard que mostra só os textos certos para o site em que você está.'),
+        h('div', { key: 't', style: { display: 'flex', flexDirection: 'column', gap: 13 } }, ['Contexto por domínio, automático', 'Local-first, open-source, sem conta'].map(tick))),
+      h('div', { key: 'r', style: { flex: 1, height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingRight: 30 } }, browserScene('web.whatsapp.com', popList)));
+
+    // ===== store icons row =====
+    const iconTile = (sz, real) => h('div', { key: sz, style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 } },
+      h('div', { style: { width: real + 24, height: real + 24, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-hairline)', background: 'var(--surface-card)' } },
+        h('img', { src: 'store/icons/icon-' + sz + '.png', width: real, height: real, alt: sz + 'px', style: { imageRendering: sz <= 32 ? 'pixelated' : 'auto' } })),
+      h('span', { style: { font: '400 12px/1 var(--font-mono)', color: 'var(--text-muted)' } }, sz + '×' + sz));
+    const iconsRow = h('div', { style: { display: 'flex', alignItems: 'flex-end', gap: 28, padding: 28, background: 'var(--surface-card)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-hairline)', fontFamily: 'var(--font-ui)' } },
+      iconTile(16, 16), iconTile(32, 32), iconTile(48, 48), iconTile(128, 96),
+      h('div', { key: 'note', style: { marginLeft: 8, maxWidth: 220 } },
+        h('div', { style: { font: '600 13px/1.3 var(--font-ui)', color: 'var(--text-strong)' } }, 'Ícones da extensão'),
+        h('div', { style: { marginTop: 4, font: '400 12px/1.45 var(--font-ui)', color: 'var(--text-muted)' } }, 'PNG transparente nos tamanhos exigidos pelo manifest (icons 16/32/48 + 128 da loja).')));
+
+    // ===== store copy panel =====
+    const copyField = (label, body, mono) => h('div', { key: label, style: { display: 'flex', flexDirection: 'column', gap: 6, padding: '14px 0', borderTop: '1px solid var(--border-hairline)' } },
+      h('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' } },
+        h('span', { style: { font: '700 11px/1 var(--font-ui)', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' } }, label),
+        mono ? h('span', { style: { font: '400 11px/1 var(--font-mono)', color: 'var(--text-faint)' } }, mono) : null),
+      h('div', { style: { font: '400 14px/1.55 var(--font-ui)', color: 'var(--text-body)', whiteSpace: 'pre-wrap' } }, body));
+    const storeCopy = h('div', { style: { width: '100%', background: 'var(--surface-card)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-hairline)', padding: '8px 28px 24px', fontFamily: 'var(--font-ui)' } },
+      copyField('Nome', 'Copia e Cola — clipboard por site', '32 caracteres'),
+      copyField('Descrição curta', 'Salve textos que você repete e cole de volta com um clique — organizados pelo site em que você está. Local-first e open-source.', 'até 132'),
+      copyField('Categoria · Idioma', 'Produtividade · Português (Brasil)'),
+      copyField('Descrição completa', 'O Copia e Cola é a sua área de transferência por contexto. Abra um site — WhatsApp Web, um portal do tribunal, um CRM ou uma ferramenta interna — e a extensão mostra só os textos, prompts, protocolos e modelos salvos para aquele domínio.\n\nComo funciona\n• Cole um texto, dê um título opcional e salve.\n• Copie de volta com um clique, direto da lista.\n• Itens deste site ficam separados dos itens globais.\n• Busque por título ou conteúdo; edite, favorite ou exclua no próprio card.\n\nPrivacidade em primeiro lugar\nSeus dados ficam neste navegador. Local-first por padrão — nada é enviado para servidores. Faça backup em JSON e leve para outro computador quando quiser.\n\nSimples antes de inteligente\nResolve copiar e colar bem feito, sem conta, sem nuvem e sem complicação. Projeto open-source.', 'até 16.000'));
+
+    return {
+      screenList, screenEmpty, screenNew, screenEdit, screenSearch, screenSearchEmpty, screenSettings: settingsScreen, screenCopied, screenOnboarding, screenOptions,
+      screenDelete, screenImport,
+      storeShot1, storeShot2, storeShot3, promoSmall, marquee, iconsRow, storeCopy,
+    };
   }
 }
 </script>
 </body>
 </html>
+

@@ -8,7 +8,7 @@ A ideia inicial é simples: ao abrir um site, o usuário vê apenas os itens sal
 
 Validar se um clipboard contextual por site reduz retrabalho em operações brasileiras que vivem copiando e colando pequenos textos entre páginas.
 
-O primeiro recorte deve ser uma extensão de navegador com:
+O primeiro recorte é uma extensão de navegador com:
 
 - salvamento local de itens por domínio;
 - título opcional;
@@ -16,6 +16,10 @@ O primeiro recorte deve ser uma extensão de navegador com:
 - copiar com um clique;
 - editar e excluir itens;
 - exportação e importação local em JSON.
+- página de boas-vindas pós-instalação;
+- página de opções para gerenciar todos os itens;
+- assets e copy inicial para Chrome Web Store;
+- landing page estática em `site/`.
 
 ## Princípios
 
@@ -26,15 +30,16 @@ O primeiro recorte deve ser uma extensão de navegador com:
 
 ## Status
 
-MVP local da extensão Manifest V3 implementado em `extension/`.
+MVP local da extensão Manifest V3 migrado para React/WXT. A fonte publicável fica em `entrypoints/`, `src/` e `public/`; o build carregável pelo navegador é gerado em `dist/`. A pasta `extension/` permanece como legado de referência visual e funcional da versão vanilla.
 
 ## Instalação local da extensão
 
 1. Abra `chrome://extensions` no Chrome ou `edge://extensions` no Edge.
 2. Ative o modo desenvolvedor.
 3. Clique em "Carregar sem compactação".
-4. Selecione a pasta `extension/` deste repositório.
-5. Fixe a extensão na barra do navegador e abra o popup em qualquer site.
+4. Rode `npm run build`.
+5. Selecione a pasta `dist/` deste repositório.
+6. Fixe a extensão na barra do navegador e abra o popup em qualquer site.
 
 O manifesto inicial solicita apenas `activeTab` e `storage`, que são usados para identificar o domínio da aba atual e validar o armazenamento local do MVP.
 
@@ -42,8 +47,10 @@ O manifesto inicial solicita apenas `activeTab` e `storage`, que são usados par
 
 - O topo mostra o domínio normalizado da aba ativa.
 - O formulário salva itens do site atual ou itens globais.
-- A lista permite buscar, copiar, editar, favoritar e excluir.
+- A lista permite buscar, copiar, editar, fixar e excluir.
 - O painel de backup exporta e importa JSON local sem apagar dados atuais.
+- A página de opções permite busca global, filtros por fixados, globais e domínio, além de edição e backup.
+- A página de boas-vindas abre na instalação para explicar o fluxo em 3 passos.
 
 Páginas internas do navegador, arquivos locais e `about:blank` mostram estado não suportado.
 
@@ -53,10 +60,17 @@ Requisitos: Node.js 20 ou superior.
 
 ```powershell
 npm install
-npm run check
+npm run store:assets
+npm run publish:ready
 ```
 
-`npm run check` executa testes unitários e validações simples do pacote da extensão, incluindo Manifest V3, permissões mínimas, referências de arquivos e ausência de recursos remotos no popup.
+`npm run build` usa WXT para gerar a extensão Manifest V3 em `dist/`, com React empacotado localmente e sem JavaScript remoto.
+
+`npm run store:assets` regenera screenshots e tiles da Chrome Web Store a partir da referência visual versionada.
+
+`npm run check` executa testes unitários e validações do pacote da extensão e dos materiais de publicação, incluindo Manifest V3, permissões mínimas, referências de arquivos, ausência de recursos remotos indevidos, landing page e dimensões dos PNGs da loja.
+
+`npm run publish:ready` adiciona o smoke test em navegador Chromium/Chrome real e gera o zip publicável via WXT em `dist/`.
 
 Para validar em navegador Chromium/Chrome real com extensão descompactada, rode:
 
@@ -64,7 +78,7 @@ Para validar em navegador Chromium/Chrome real com extensão descompactada, rode
 npm run chrome:smoke
 ```
 
-Esse smoke test carrega a extensão em um perfil temporário, abre o popup pelo `chrome-extension://...` e valida fluxo básico: domínio `web.whatsapp.com`, salvar, persistir após reload, isolamento entre domínios e item global.
+Esse smoke test carrega `dist/` em um perfil temporário, abre o popup pelo `chrome-extension://...` e valida domínio `web.whatsapp.com`, salvar, copiar, fixar, editar, excluir, buscar, persistir após reload, isolamento entre domínios, item global, backup/importação, welcome e options.
 
 O Chrome estável instalado pode bloquear flags de carregamento de extensão em automação. Quando isso acontece, o script usa um Chromium local compatível do Playwright, se disponível.
 
@@ -72,11 +86,21 @@ O Chrome estável instalado pode bloquear flags de carregamento de extensão em 
 
 O roteiro para teste em Chrome/Edge está em [docs/validation-checklist.md](docs/validation-checklist.md).
 
+O roteiro de publicação está em [docs/publication.md](docs/publication.md).
+
+Para gerar capturas visuais locais de comparação, rode:
+
+```powershell
+npm run visual:snapshots
+```
+
+As imagens são gravadas em `output/playwright/`, pasta local ignorada pelo Git.
+
 ## Design system
 
 As telas e elementos visuais extraidos dos pacotes locais ficam em [design-system/INDEX.md](design-system/INDEX.md).
 
-Ali estao organizados tokens, guidelines, componentes JSX, assets de marca, UI kit do popup e a tela exportada da extensao.
+Ali estao organizados tokens, guidelines, componentes JSX, assets de marca, UI kit do popup e a tela exportada da extensao, incluindo popup, onboarding, options e materiais da Chrome Web Store.
 
 ## Roadmap curto
 

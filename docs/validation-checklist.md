@@ -1,13 +1,13 @@
 # Checklist de validação local
 
-Use a pasta `extension/` como extensão sem compactação no Chrome ou Edge.
+Use a pasta `dist/` como extensão sem compactação no Chrome ou Edge. Gere essa pasta antes com `npm run build`.
 
 ## Instalação
 
 1. Abrir `chrome://extensions` ou `edge://extensions`.
 2. Ativar modo desenvolvedor.
 3. Clicar em "Carregar sem compactação".
-4. Selecionar a pasta `extension/`.
+4. Selecionar a pasta `dist/`.
 5. Abrir a extensão em um site comum.
 
 ## Fluxos manuais
@@ -23,15 +23,36 @@ Use a pasta `extension/` como extensão sem compactação no Chrome ou Edge.
 - Exportar JSON.
 - Importar o JSON em um perfil limpo ou após limpar o storage da extensão.
 - Tentar importar JSON inválido e confirmar mensagem de erro sem apagar dados atuais.
+- Abrir a tela de boas-vindas em `welcome.html` e confirmar os 3 passos de onboarding.
+- Abrir a página de opções da extensão e validar busca global, filtros `Todos`, `Fixados`, `Globais` e filtro por domínio.
+- Na página de opções, validar copiar, editar, fixar/desafixar, excluir, exportar e importar.
+- Abrir `site/index.html` em desktop e mobile e confirmar que não há promessa de sync, IA, nuvem ou colaboração.
+- Conferir a ficha em `store/listing/pt-BR.md`.
+- Conferir dimensões dos assets da loja em `store/screenshots/`, `store/promotional/` e `store/icons/`.
 
 ## Validação automatizada local
 
 ```powershell
-npm run check
-npm run chrome:smoke
+npm run publish:ready
+npm run store:assets
+npm run visual:snapshots
 ```
 
-O smoke automatizado valida a extensão em um perfil temporário de navegador Chromium/Chrome real quando o binário local permite `--load-extension`.
+O smoke automatizado valida o build React/WXT em `dist/` em um perfil temporário de navegador Chromium/Chrome real quando o binário local permite `--load-extension`.
+
+`npm run store:assets` regenera os PNGs da Chrome Web Store a partir de `design-system/screens/telas-da-extensao.html`.
+
+`npm run visual:snapshots` captura referência visual, popup React, welcome, options e landing em `output/playwright/` para inspeção. Essa pasta é local e ignorada pelo Git.
+
+## Prontidão de publicação
+
+- O pacote de upload da extensão é gerado por `npm run package` em `dist/`.
+- A landing page publicável fica em `site/` e é publicada pelo workflow `.github/workflows/pages.yml`.
+- O guia operacional de publicação está em `docs/publication.md`.
+- A publicação real na Chrome Web Store ainda depende de conta de desenvolvedor Google, revisão final da ficha e upload manual.
+- O link público da Chrome Web Store deve substituir o CTA da landing quando a extensão for aprovada.
+- O link público do GitHub já está conectado na landing.
+- A política de privacidade publicável fica em `site/privacy.html`.
 
 ## Limitações conhecidas
 
@@ -39,4 +60,4 @@ O smoke automatizado valida a extensão em um perfil temporário de navegador Ch
 - Backup é JSON local, sem criptografia e sem nuvem.
 - Não há sincronização entre navegadores ou máquinas.
 - Páginas internas do navegador, arquivos locais e `about:blank` não são suportados.
-- A validação real em Chrome/Edge ainda é manual.
+- A validação real final em Chrome/Edge e Chrome Web Store ainda é manual.

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Copia e Cola</title>
+    <meta name="description" content="Salve textos que você repete e cole de volta com um clique, organizados pelo site em que você está.">
+    <link rel="icon" type="image/png" sizes="128x128" href="assets/icons/icon-128.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Copia e Cola">
+        <span class="brand-mark" aria-hidden="true"><i></i><b></b></span>
+        <span>Copia e Cola</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="privacy.html">Privacidade</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Clipboard por site · local-first</p>
+          <h1>Copia e Cola</h1>
+          <p class="subtitle">Salve textos que você repete e cole de volta com um clique, organizados pelo site em que você está.</p>
+          <div class="actions">
+            <a class="button button--primary" href="#instalar">Instalar localmente</a>
+            <a class="button button--secondary" href="https://github.com/CafeSemCafeina/copia-e-cola">Ver código no GitHub</a>
+          </div>
+          <p class="note">Sem conta, sem nuvem e sem promessa de IA: primeiro, resolver o copiar e colar diário.</p>
+        </div>
+        <figure class="hero__media">
+          <img src="assets/screenshots/contexto-por-site-1280x800.png" alt="Screenshot do Copia e Cola mostrando itens organizados por domínio">
+        </figure>
+      </section>
+
+      <section id="como-funciona" class="section">
+        <p class="eyebrow">Como funciona</p>
+        <h2>Três passos para reutilizar textos sem misturar contextos</h2>
+        <div class="steps">
+          <article>
+            <span>1</span>
+            <h3>Abra um site</h3>
+            <p>WhatsApp Web, portal jurídico, CRM ou ferramenta interna viram contextos separados.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Salve em segundos</h3>
+            <p>Cole o texto, dê um título opcional e escolha entre item do site ou item global.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Copie com 1 clique</h3>
+            <p>Busque, fixe e copie respostas, protocolos e modelos curtos quando precisar.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split">
+        <div>
+          <p class="eyebrow">Casos de uso</p>
+          <h2>Feito para operações que repetem textos todos os dias</h2>
+        </div>
+        <div class="use-cases">
+          <article><strong>WhatsApp Web</strong><span>Respostas de saudação, pedidos de documento e encerramento.</span></article>
+          <article><strong>Portal jurídico</strong><span>Modelos de protocolo, prazos, documentos e orientações.</span></article>
+          <article><strong>CRM e ferramenta interna</strong><span>Textos de follow-up, qualificação e handoff sem trocar de biblioteca.</span></article>
+        </div>
+      </section>
+
+      <section id="privacidade" class="section privacy">
+        <div>
+          <p class="eyebrow">Privacidade</p>
+          <h2>Seus dados ficam no navegador</h2>
+          <p>A extensão usa apenas <code>activeTab</code> para identificar o domínio da aba atual e <code>storage</code> para salvar seus itens localmente. Backup e importação acontecem por JSON escolhido por você.</p>
+        </div>
+        <img src="assets/screenshots/local-first-1280x800.png" alt="Screenshot destacando funcionamento local-first">
+      </section>
+
+      <section id="instalar" class="section install">
+        <p class="eyebrow">Instalação</p>
+        <h2>Publicação na Chrome Web Store em preparação</h2>
+        <p>Enquanto a ficha pública não estiver no ar, gere o build e carregue a pasta <code>dist/</code> como extensão sem compactação no Chrome ou Edge.</p>
+        <ol>
+          <li>Rode <code>npm install</code> e <code>npm run build</code>.</li>
+          <li>Abra <code>chrome://extensions</code>.</li>
+          <li>Ative o modo desenvolvedor.</li>
+          <li>Clique em “Carregar sem compactação”.</li>
+          <li>Selecione a pasta <code>dist/</code> deste repositório.</li>
+        </ol>
+      </section>
+
+      <section id="codigo" class="section code">
+        <p class="eyebrow">Open-source</p>
+        <h2>Código auditável</h2>
+        <p>O código-fonte está disponível no GitHub, incluindo extensão, landing page, assets de loja, specs e validações locais.</p>
+        <p><a href="https://github.com/CafeSemCafeina/copia-e-cola">Abrir repositório público</a></p>
+      </section>
+
+      <section id="faq" class="section faq">
+        <p class="eyebrow">FAQ</p>
+        <details open>
+          <summary>O Copia e Cola sincroniza entre computadores?</summary>
+          <p>Não. O MVP é local-first. Para levar dados para outro perfil, use exportação e importação em JSON.</p>
+        </details>
+        <details>
+          <summary>A extensão envia meus textos para servidores?</summary>
+          <p>Não. Os itens ficam no storage local do navegador.</p>
+        </details>
+        <details>
+          <summary>Existe IA ou sugestão automática?</summary>
+          <p>Não nesta versão. A prioridade é um fluxo simples, rápido e auditável de salvar e reutilizar textos.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>MIT License</span>
+      <a href="privacy.html">Privacidade</a>
+    </footer>
+  </body>
+</html>

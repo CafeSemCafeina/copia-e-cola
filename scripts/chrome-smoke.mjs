@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { chromium } from "playwright-core";
 
-const extensionDir = resolve("extension");
+const extensionDir = resolve("dist");
 
 function browserCandidates() {
   const candidates = [
@@ -107,13 +107,17 @@ async function findWorkingBrowser() {
 
 async function openPopup(context, extensionId, activeUrl) {
   const popup = await context.newPage();
-  const popupUrl = `chrome-extension://${extensionId}/popup/popup.html?activeUrl=${encodeURIComponent(activeUrl)}`;
+  const popupUrl = `chrome-extension://${extensionId}/popup.html?activeUrl=${encodeURIComponent(activeUrl)}`;
   await popup.goto(popupUrl, { waitUntil: "domcontentloaded" });
   await popup.waitForSelector("#app-content:not([hidden])", { timeout: 5000 });
   return popup;
 }
 
 async function saveItem(page, title, content, global = false) {
+  if (await page.locator("#item-form").isHidden()) {
+    await page.getByRole("button", { name: "Novo item para este site" }).click();
+  }
+
   await page.locator("#title-input").fill(title);
   await page.locator("#content-input").fill(content);
 
@@ -121,9 +125,13 @@ async function saveItem(page, title, content, global = false) {
     await page.locator("#global-input").check();
   }
 
-  await page.getByRole("button", { name: "Salvar" }).click();
+  await page.getByRole("button", { name: "Salvar", exact: true }).click();
   await page.getByText("Item salvo.").waitFor();
   await page.locator(".clipboard-item__title", { hasText: title }).waitFor();
+}
+
+async function itemCard(page, title) {
+  return page.locator(".clipboard-item", { hasText: title }).first();
 }
 
 let launched;
@@ -139,16 +147,42 @@ try {
   await assert.doesNotReject(() => popup.getByRole("heading", { name: "web.whatsapp.com" }).waitFor());
 
   await saveItem(popup, "Saudação WhatsApp", "Olá! Já vou te ajudar por aqui.");
+  let saudacao = await itemCard(popup, "Saudação WhatsApp");
+  await saudacao.locator(".clipboard-item__copy").click();
+  await popup.getByText("Copiado para a área de transferência.").waitFor();
+  await saudacao.hover();
+  await saudacao.locator(".favorite-action").click();
+  await popup.getByText("Item fixado.").waitFor();
+  await popup.locator(".clipboard-item--favorite", { hasText: "Saudação WhatsApp" }).waitFor();
+  saudacao = await itemCard(popup, "Saudação WhatsApp");
+  await saudacao.hover();
+  await saudacao.locator(".edit-action").click();
+  await popup.locator("#content-input").fill("Olá! Já vou te ajudar por aqui. Pode me mandar mais detalhes?");
+  await popup.getByRole("button", { name: "Salvar alterações" }).click();
+  await popup.getByText("Alterações salvas.").waitFor();
+  await popup.getByText("mais detalhes").waitFor();
+  await popup.locator("#search-input").fill("detalhes");
+  await popup.locator(".clipboard-item__title", { hasText: "Saudação WhatsApp" }).waitFor();
+  await popup.locator("#clear-search-button").click();
+  await saveItem(popup, "Excluir no smoke", "Item temporário para validar exclusão.");
+  const deleteCard = await itemCard(popup, "Excluir no smoke");
+  await deleteCard.hover();
+  await deleteCard.locator(".delete-action").click();
+  await popup.getByRole("button", { name: "Cancelar exclusão" }).waitFor();
+  await popup.getByRole("button", { name: "Confirmar exclusão" }).click();
+  await popup.getByText("Item excluído.").waitFor();
+  assert.equal(await popup.locator(".clipboard-item__title", { hasText: "Excluir no smoke" }).count(), 0);
+
   await popup.reload({ waitUntil: "domcontentloaded" });
   await popup.locator(".clipboard-item__title", { hasText: "Saudação WhatsApp" }).waitFor();
 
   const otherDomain = await openPopup(context, extensionId, "https://portal-juridico.example.test/processos");
-  await otherDomain.getByText("Nenhum item salvo para este site ainda.").waitFor();
+  await otherDomain.getByText("Nenhum item salvo para este site ainda").waitFor();
   assert.equal(await otherDomain.locator(".clipboard-item__title", { hasText: "Saudação WhatsApp" }).count(), 0);
   await saveItem(otherDomain, "Portal jurídico", "Texto restrito ao portal jurídico.");
 
   const syntelixDomain = await openPopup(context, extensionId, "https://app.syntelix.com/operacao");
-  await syntelixDomain.getByText("Nenhum item salvo para este site ainda.").waitFor();
+  await syntelixDomain.getByText("Nenhum item salvo para este site ainda").waitFor();
   assert.equal(await syntelixDomain.locator(".clipboard-item__title", { hasText: "Saudação WhatsApp" }).count(), 0);
   assert.equal(await syntelixDomain.locator(".clipboard-item__title", { hasText: "Portal jurídico" }).count(), 0);
   await saveItem(syntelixDomain, "Ferramenta Syntelix", "Texto restrito à ferramenta Syntelix.");
@@ -179,12 +213,26 @@ try {
   assert.ok(importExtensionId, "extensao nao carregou no perfil limpo de importacao");
 
   const cleanPopup = await openPopup(importLaunched.context, importExtensionId, "https://web.whatsapp.com/");
-  await cleanPopup.getByText("Nenhum item salvo para este site ainda.").waitFor();
+  await cleanPopup.getByText("Nenhum item salvo para este site ainda").waitFor();
   await cleanPopup.locator("#backup-toggle").click();
   await cleanPopup.locator("#import-input").setInputFiles(exportPath);
-  await cleanPopup.getByText(/itens importados/).waitFor();
+  await cleanPopup.locator("#import-summary", { hasText: /itens importados/ }).waitFor();
+  await cleanPopup.getByRole("button", { name: "Voltar" }).click();
   await cleanPopup.locator(".clipboard-item__title", { hasText: "Saudação WhatsApp" }).waitFor();
   await cleanPopup.locator(".clipboard-item__title", { hasText: "Item global" }).waitFor();
+
+  const welcome = await context.newPage();
+  await welcome.goto(`chrome-extension://${extensionId}/welcome.html`, { waitUntil: "domcontentloaded" });
+  await welcome.getByRole("heading", { name: "Tudo pronto para copiar menos e colar melhor" }).waitFor();
+  await welcome.close();
+
+  const options = await context.newPage();
+  await options.goto(`chrome-extension://${extensionId}/options.html`, { waitUntil: "domcontentloaded" });
+  await options.getByRole("heading", { name: "Seus itens" }).waitFor();
+  await options.locator(".clipboard-item", { hasText: "Saudação WhatsApp" }).waitFor();
+  await options.getByRole("button", { name: "Fixados" }).click();
+  await options.locator(".clipboard-item", { hasText: "Saudação WhatsApp" }).waitFor();
+  await options.close();
 
   console.log(`chrome smoke ok (${extensionId}) via ${executablePath}`);
 } finally {

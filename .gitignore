@@ -2,8 +2,11 @@
 node_modules/
 
 # Builds e pacotes
+.wxt/
+.output/
 dist/
 build/
+output/
 *.zip
 
 # Ambiente local

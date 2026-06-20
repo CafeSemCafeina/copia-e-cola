@@ -42,10 +42,10 @@
       domain,
       title: String(input.title || "").trim() || makeTitle(content),
       content,
-      favorite: Boolean(input.favorite),
+      favorite: input.favorite === undefined ? Boolean(fallback.favorite) : Boolean(input.favorite),
       createdAt,
       updatedAt,
-      lastCopiedAt: input.lastCopiedAt || null
+      lastCopiedAt: input.lastCopiedAt || fallback.lastCopiedAt || null
     };
   }
 
@@ -138,7 +138,9 @@
     const item = normalizeItem(input, {
       id: existing && existing.id,
       createdAt: existing && existing.createdAt,
-      domain: input.domain || (existing && existing.domain)
+      domain: input.domain || (existing && existing.domain),
+      favorite: existing && existing.favorite,
+      lastCopiedAt: existing && existing.lastCopiedAt
     });
 
     item.updatedAt = nowIso();

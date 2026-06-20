@@ -1,0 +1,9 @@
+{
+  "extends": "./.wxt/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "types": ["node", "chrome"]
+  },
+  "include": ["entrypoints", "src", "tests", "wxt.config.ts"]
+}
