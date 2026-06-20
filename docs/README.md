@@ -32,6 +32,7 @@ ADRs atuais:
 - `adr/0001-open-core-and-cloud-boundary.md`: separa core publico MIT de cloud privado.
 - `adr/0002-brand-assets-read-only.md`: define marca/assets como portfolio read-only, nao como parte livre da MIT.
 - `adr/0003-product-packaging-and-pricing.md`: define planos Open Source Local, Free Cloud, Pro, AI e diretrizes de pricing.
+- `adr/0004-stripe-offer-and-checkout-flow.md`: define pagina de ofertas e fluxo Stripe.
 
 ## Operacao
 

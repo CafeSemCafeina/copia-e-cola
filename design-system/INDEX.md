@@ -24,6 +24,7 @@ Os arquivos ZIP permanecem como fonte local ignorada pelo Git. A versao navegave
 | `components/clipboard/` | `ClipboardItem`, `DomainHeader` e exemplos. | Elementos especificos do fluxo copia-e-cola. |
 | `ui_kits/extension/` | `PopupApp.jsx` e `index.html`. | Prototipo de referencia do popup da extensao. |
 | `screens/` | Tela exportada da extensao e runtime de suporte. | Visualizacao das telas extraidas. |
+| `screens/payment/` | `checkout-copia-e-cola-pro.html`. | Referencia visual da pagina de ofertas, checkout e sucesso Pro. |
 
 ## Arquivos principais
 
@@ -37,6 +38,7 @@ Os arquivos ZIP permanecem como fonte local ignorada pelo Git. A versao navegave
 ## Telas extraidas
 
 - `screens/telas-da-extensao.html`: exportacao visual das telas da extensao.
+- `screens/payment/checkout-copia-e-cola-pro.html`: exportacao visual do fluxo Pro.
 - `screens/support.js`: suporte necessario para a tela exportada.
 
 A exportacao atual de `screens/telas-da-extensao.html` veio do pacote local `Extensão copia e cola.zip` e inclui a referencia completa para:
