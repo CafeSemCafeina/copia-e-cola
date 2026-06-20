@@ -75,3 +75,64 @@ test("edita, favorita, copia e exclui item", async () => {
   assert.equal(removed, true);
   assert.equal((await storage.readAll(local)).length, 0);
 });
+
+test("normaliza campos de comando em itens antigos", () => {
+  const item = storage.normalizeItem({
+    id: "legacy",
+    scope: "global",
+    title: "Antigo",
+    content: "Texto antigo"
+  } as any);
+
+  assert.equal(item.commandEnabled, false);
+  assert.equal(item.commandTrigger, null);
+});
+
+test("salva item com comando normalizado", async () => {
+  const local = storage.createMemoryChromeStorage();
+  const item = await storage.upsertItem({
+    scope: "global",
+    title: "Data",
+    content: "20/06/2026",
+    commandEnabled: true,
+    commandTrigger: "/DATA"
+  }, local);
+
+  assert.equal(item.commandEnabled, true);
+  assert.equal(item.commandTrigger, "/data");
+});
+
+test("bloqueia duplicidade e prefixo no mesmo contexto efetivo", async () => {
+  const local = storage.createMemoryChromeStorage();
+  await storage.upsertItem({
+    scope: "global",
+    title: "Email",
+    content: "a@b.com",
+    commandEnabled: true,
+    commandTrigger: "/email"
+  }, local);
+
+  await assert.rejects(
+    () => storage.upsertItem({
+      scope: "domain",
+      domain: "site.com",
+      title: "Email site",
+      content: "site@b.com",
+      commandEnabled: true,
+      commandTrigger: "/email"
+    }, local),
+    /ja existe/
+  );
+
+  await assert.rejects(
+    () => storage.upsertItem({
+      scope: "domain",
+      domain: "site.com",
+      title: "Email Syntelix",
+      content: "syntelix@b.com",
+      commandEnabled: true,
+      commandTrigger: "/email-syntelix"
+    }, local),
+    /conflita/
+  );
+});

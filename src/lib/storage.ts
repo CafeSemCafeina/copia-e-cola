@@ -1,4 +1,5 @@
 import type { ClipboardItem } from "../types";
+import { findCommandConflict, normalizeCommandTrigger, validateCommandTrigger } from "./slash-commands";
 
 export const STORAGE_KEY = "copiaEColaItems";
 export const SCHEMA_VERSION_KEY = "copiaEColaSchemaVersion";
@@ -32,6 +33,12 @@ export function normalizeItem(input: Partial<ClipboardItem>, fallback: Partial<C
 
   const createdAt = input.createdAt || fallback.createdAt || nowIso();
   const updatedAt = input.updatedAt || fallback.updatedAt || createdAt;
+  const commandEnabled = input.commandEnabled === undefined ? Boolean(fallback.commandEnabled) : Boolean(input.commandEnabled);
+  const commandTrigger = commandEnabled ? normalizeCommandTrigger(input.commandTrigger || fallback.commandTrigger) : null;
+  if (commandEnabled) {
+    const validation = validateCommandTrigger(commandTrigger);
+    if (!validation.ok) throw new Error(validation.message);
+  }
 
   return {
     id: String(input.id || fallback.id || generateId()),
@@ -42,7 +49,9 @@ export function normalizeItem(input: Partial<ClipboardItem>, fallback: Partial<C
     favorite: input.favorite === undefined ? Boolean(fallback.favorite) : Boolean(input.favorite),
     createdAt,
     updatedAt,
-    lastCopiedAt: input.lastCopiedAt || fallback.lastCopiedAt || null
+    lastCopiedAt: input.lastCopiedAt || fallback.lastCopiedAt || null,
+    commandEnabled,
+    commandTrigger
   };
 }
 
@@ -96,10 +105,15 @@ export async function readAll(storage = getChromeStorage()): Promise<ClipboardIt
 
 export async function writeAll(items: ClipboardItem[], storage = getChromeStorage()): Promise<void> {
   if (!storage) throw new Error("Storage local indisponivel.");
+  const normalized = sortItems(items.map((item) => normalizeItem(item)));
+  for (const item of normalized) {
+    const conflict = findCommandConflict(item, normalized);
+    if (conflict) throw new Error(conflict.message);
+  }
 
   await storage.set({
     [SCHEMA_VERSION_KEY]: SCHEMA_VERSION,
-    [STORAGE_KEY]: sortItems(items.map((item) => normalizeItem(item)))
+    [STORAGE_KEY]: normalized
   });
 }
 
@@ -121,7 +135,9 @@ export async function upsertItem(input: Partial<ClipboardItem>, storage = getChr
     createdAt: existing?.createdAt,
     domain: input.domain || existing?.domain,
     favorite: existing?.favorite,
-    lastCopiedAt: existing?.lastCopiedAt
+    lastCopiedAt: existing?.lastCopiedAt,
+    commandEnabled: existing?.commandEnabled,
+    commandTrigger: existing?.commandTrigger
   });
 
   item.updatedAt = nowIso();
