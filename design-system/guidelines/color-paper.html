@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Paper — Surfaces" subtitle="Warm off-white neutrals for canvas, cards, fills and borders" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 18px; background: var(--surface-canvas); font-family: var(--font-ui); }
+  .row { display: flex; gap: 10px; }
+  .sw { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 52px; border-radius: var(--radius-md); border: 1px solid var(--border-hairline); }
+  .name { font-size: 11px; font-weight: 600; color: var(--text-strong); }
+  .val { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--paper-0)"></div><span class="name">0 · card</span><span class="val">#ffffff</span></div>
+    <div class="sw"><div class="chip" style="background:var(--paper-50)"></div><span class="name">50 · canvas</span><span class="val">#faf9f5</span></div>
+    <div class="sw"><div class="chip" style="background:var(--paper-100)"></div><span class="name">100 · fill</span><span class="val">#f4f2ec</span></div>
+    <div class="sw"><div class="chip" style="background:var(--paper-150)"></div><span class="name">150 · inset</span><span class="val">#ece9e1</span></div>
+    <div class="sw"><div class="chip" style="background:var(--paper-200)"></div><span class="name">200 · hairline</span><span class="val">#e3dfd5</span></div>
+    <div class="sw"><div class="chip" style="background:var(--paper-300)"></div><span class="name">300 · border</span><span class="val">#d4cfc2</span></div>
+  </div>
+</body>
+</html>

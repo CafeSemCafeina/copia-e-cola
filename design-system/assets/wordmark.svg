@@ -1,0 +1,8 @@
+<svg width="216" height="44" viewBox="0 0 216 44" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Copia e Cola">
+  <rect x="2" y="2" width="40" height="40" rx="10" fill="#e7f3ec"></rect>
+  <rect x="9.5" y="9.5" width="16" height="16" rx="4.5" fill="none" stroke="#1b8a5e" stroke-width="2.2" opacity="0.55"></rect>
+  <rect x="15.5" y="15.5" width="16" height="16" rx="4.5" fill="#1b8a5e"></rect>
+  <rect x="19" y="20.2" width="9.5" height="2" rx="1" fill="#ffffff"></rect>
+  <rect x="19" y="24.4" width="6.4" height="2" rx="1" fill="#ffffff" opacity="0.8"></rect>
+  <text x="54" y="29" font-family="&#39;Hanken Grotesk&#39;, sans-serif" font-size="20" font-weight="700" letter-spacing="-0.01em" fill="#1c1b17">Copia<tspan fill="#1b8a5e"> e </tspan>Cola</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Copia e Cola">
+  <rect x="3" y="3" width="42" height="42" rx="11" fill="#e7f3ec"></rect>
+  
+  <rect x="11" y="11" width="19" height="19" rx="5" fill="none" stroke="#1b8a5e" stroke-width="2.4" opacity="0.55"></rect>
+  
+  <rect x="18" y="18" width="19" height="19" rx="5" fill="#1b8a5e"></rect>
+  
+  <rect x="22" y="23.5" width="11" height="2.2" rx="1.1" fill="#ffffff"></rect>
+  <rect x="22" y="28.5" width="7.5" height="2.2" rx="1.1" fill="#ffffff" opacity="0.8"></rect>
+</svg>

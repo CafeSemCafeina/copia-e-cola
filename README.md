@@ -28,6 +28,12 @@ O primeiro recorte deve ser uma extensão de navegador com:
 
 Projeto em bootstrap inicial.
 
+## Design system
+
+As telas e elementos visuais extraidos dos pacotes locais ficam em [design-system/INDEX.md](design-system/INDEX.md).
+
+Ali estao organizados tokens, guidelines, componentes JSX, assets de marca, UI kit do popup e a tela exportada da extensao.
+
 ## Roadmap curto
 
 1. Definir PRD mínimo e critérios de aceite.

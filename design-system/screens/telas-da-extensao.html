@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/radii.css">
+  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/motion.css">
+  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/tokens/base.css">
+  <link rel="stylesheet" href="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/styles.css">
+  <script src="_ds/copia-e-cola-design-system-b68b1cdd-66ed-4526-981f-e7945c4a5baa/_ds_bundle.js"></script>
+</helmet>
+<div style="width:max-content; min-width:100%; min-height:100vh; box-sizing:border-box; padding:48px; background:#e7e5df; font-family:var(--font-ui);">
+
+  <div style="margin-bottom:36px;">
+    <div style="font:700 30px/1.1 var(--font-ui); letter-spacing:-0.02em; color:var(--text-strong);">Copia e Cola — telas da extensão</div>
+    <div style="margin-top:8px; font:400 15px/1.5 var(--font-ui); color:var(--text-muted); max-width:680px;">Todas as telas para a Chrome Web Store: estados do popup (360&nbsp;px), a aba de boas-vindas pós-instalação e a página de opções para gerenciar todos os itens. Compostas com os componentes do design system.</div>
+  </div>
+
+  <div style="font:600 12px/1 var(--font-ui); letter-spacing:.06em; text-transform:uppercase; color:var(--text-brand); margin-bottom:16px;">Popup · estados principais</div>
+  <div style="display:flex; gap:40px; align-items:flex-start; margin-bottom:40px;">
+    <div style="flex:none; width:360px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Lista (padrão)</div>
+      <div>{{ screenList }}</div>
+    </div>
+    <div style="flex:none; width:360px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Primeiro uso (vazio)</div>
+      <div>{{ screenEmpty }}</div>
+    </div>
+    <div style="flex:none; width:360px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Novo item</div>
+      <div>{{ screenNew }}</div>
+    </div>
+    <div style="flex:none; width:360px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Editar item</div>
+      <div>{{ screenEdit }}</div>
+    </div>
+  </div>
+
+  <div style="font:600 12px/1 var(--font-ui); letter-spacing:.06em; text-transform:uppercase; color:var(--text-brand); margin-bottom:16px;">Popup · busca, backup e feedback</div>
+  <div style="display:flex; gap:40px; align-items:flex-start; margin-bottom:48px;">
+    <div style="flex:none; width:360px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Busca</div>
+      <div>{{ screenSearch }}</div>
+    </div>
+    <div style="flex:none; width:360px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Busca sem resultados</div>
+      <div>{{ screenSearchEmpty }}</div>
+    </div>
+    <div style="flex:none; width:360px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Configurações / Backup</div>
+      <div>{{ screenSettings }}</div>
+    </div>
+    <div style="flex:none; width:360px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Copiado (toast)</div>
+      <div>{{ screenCopied }}</div>
+    </div>
+  </div>
+
+  <div style="font:600 12px/1 var(--font-ui); letter-spacing:.06em; text-transform:uppercase; color:var(--text-brand); margin-bottom:16px;">Aba de boas-vindas · pós-instalação</div>
+  <div style="display:flex; gap:40px; align-items:flex-start; margin-bottom:48px;">
+    <div style="flex:none; width:980px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Onboarding (chrome-extension://…/welcome.html)</div>
+      <div style="border-radius:2px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.08); border:1px solid var(--border-hairline);">{{ screenOnboarding }}</div>
+    </div>
+  </div>
+
+  <div style="font:600 12px/1 var(--font-ui); letter-spacing:.06em; text-transform:uppercase; color:var(--text-brand); margin-bottom:16px;">Página de opções · gerenciar todos os itens</div>
+  <div style="display:flex; gap:40px; align-items:flex-start;">
+    <div style="flex:none; width:1080px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font:600 12px/1 var(--font-ui); letter-spacing:.02em; text-transform:uppercase; color:var(--text-muted);">Opções (chrome://extensions › Opções)</div>
+      <div style="border-radius:2px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.08); border:1px solid var(--border-hairline);">{{ screenOptions }}</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    this._tick = setInterval(() => {
+      if (window.CopiaEColaDesignSystem_b68b1c) { clearInterval(this._tick); this.forceUpdate(); }
+    }, 60);
+  }
+  componentWillUnmount() { clearInterval(this._tick); }
+
+  renderVals() {
+    const DS = window.CopiaEColaDesignSystem_b68b1c;
+    if (!DS) return {};
+    const h = React.createElement;
+    const { DomainHeader, ClipboardItem, SearchInput, Input, Textarea, Button, IconButton, EmptyState, Toast, Badge, Icon } = DS;
+    const noop = () => {};
+
+    // ---- data ----
+    const domainItems = [
+      { id: 'd1', scope: 'domain', favorite: true, title: 'Saudação inicial', content: 'Olá! Tudo bem? Sou da equipe e já vou te ajudar por aqui. Pode me contar o que você precisa?', meta: 'Copiado há 2 dias' },
+      { id: 'd2', scope: 'domain', title: 'Pedido de documentos', content: 'Para dar andamento, preciso de: RG, CPF e comprovante de residência atualizado. Pode enviar por aqui mesmo.', meta: 'Copiado há 5 dias' },
+      { id: 'd3', scope: 'domain', title: 'Encerramento do atendimento', content: 'Fico à disposição! Qualquer dúvida, é só chamar por aqui. Tenha um ótimo dia.', meta: 'Criado há 1 semana' },
+    ];
+    const globalItems = [
+      { id: 'g1', scope: 'global', title: 'Pedido de protocolo', content: 'Por gentileza, me informe o número de protocolo para que eu localize seu atendimento.', meta: 'Copiado há 1 semana' },
+      { id: 'g2', scope: 'global', favorite: true, title: 'Dados bancários — PIX', content: 'Chave PIX (CNPJ): 12.345.678/0001-90 — Banco 077. Confirme o envio para liberar o serviço.', meta: 'Copiado ontem' },
+    ];
+
+    // ---- small helpers ----
+    const item = (it) => h(ClipboardItem, { key: it.id, title: it.title, content: it.content, scope: it.scope, favorite: !!it.favorite, meta: it.meta, copied: !!it.copied, onCopy: noop, onEdit: noop, onDelete: noop, onToggleFavorite: noop });
+    const col = (arr) => h('div', { style: { display: 'flex', flexDirection: 'column', gap: 8 } }, arr);
+    const sectionLabel = (text, count) => h('div', { style: { display: 'flex', alignItems: 'center', gap: 6, padding: '4px 2px 2px' } },
+      h('span', { key: 't', style: { font: 'var(--fw-bold) var(--text-2xs)/1 var(--font-ui)', letterSpacing: 'var(--ls-wide)', textTransform: 'uppercase', color: 'var(--text-muted)' } }, text),
+      (typeof count === 'number') ? h('span', { key: 'c', style: { font: 'var(--type-meta)', color: 'var(--text-muted)' } }, count) : null);
+
+    const mark = (s) => h('span', { style: { position: 'relative', width: s, height: s, display: 'inline-block', flex: 'none' } },
+      h('span', { key: 'a', style: { position: 'absolute', left: 0, top: 0, width: s * 0.62, height: s * 0.62, borderRadius: Math.max(3, s * 0.16), border: '1.8px solid var(--green-500)', opacity: .55 } }),
+      h('span', { key: 'b', style: { position: 'absolute', right: 0, bottom: 0, width: s * 0.62, height: s * 0.62, borderRadius: Math.max(3, s * 0.16), background: 'var(--green-500)' } }));
+    const brandLockup = (fs) => h('div', { style: { display: 'flex', alignItems: 'center', gap: 10 } },
+      h('span', { key: 'm', style: { display: 'flex', alignItems: 'center', justifyContent: 'center', width: fs + 18, height: fs + 18, borderRadius: 'var(--radius-md)', background: 'var(--green-50)', border: '1px solid var(--green-100)', flex: 'none' } }, mark(fs)),
+      h('span', { key: 'w', style: { font: 'var(--fw-bold) ' + (fs - 1) + 'px/1 var(--font-ui)', letterSpacing: '-0.01em', color: 'var(--text-strong)' } }, 'Copia e ', h('span', { style: { color: 'var(--text-brand)' } }, 'Cola')));
+
+    // ---- popup shell pieces ----
+    const header = (count) => h(DomainHeader, { domain: 'web.whatsapp.com', count: count, onSettings: noop });
+    const topPad = (kids) => h('div', { style: { padding: '12px 12px 8px', display: 'flex', flexDirection: 'column', gap: 10 } }, kids);
+    const listArea = (kids) => h('div', { style: { padding: '0 12px 12px', display: 'flex', flexDirection: 'column', gap: 8 } }, kids);
+    const search = (v) => h(SearchInput, { value: v || '', onChange: noop, onClear: noop, placeholder: 'Buscar por título ou conteúdo' });
+    const footer = h('div', { style: { display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderTop: '1px solid var(--border-hairline)', background: 'var(--surface-card)' } },
+      h(Icon, { key: 'l', name: 'lock', size: 13, style: { color: 'var(--text-muted)' } }),
+      h('span', { key: 's', style: { font: 'var(--type-meta)', color: 'var(--text-muted)', flex: 1 } }, 'Salvo localmente neste navegador'),
+      h('span', { key: 'b', style: { font: 'var(--fw-semibold) var(--text-2xs)/1 var(--font-ui)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', color: 'var(--text-brand)' } }, 'Backup'));
+    const collapsedComposer = h('button', { type: 'button', style: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, width: '100%', height: 36, border: '1px dashed var(--border-default)', borderRadius: 'var(--radius-md)', background: 'var(--surface-card)', color: 'var(--text-brand)', cursor: 'pointer', font: 'var(--fw-semibold) var(--text-sm)/1 var(--font-ui)' } }, h(Icon, { key: 'i', name: 'plus', size: 16 }), ' Novo item para este site');
+    const openComposer = (edit) => h('div', { style: { display: 'flex', flexDirection: 'column', gap: 10, padding: 12, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', background: 'var(--surface-card)', boxShadow: 'var(--shadow-sm)' } },
+      h(Input, { key: 'i', label: 'Título (opcional)', value: edit ? 'Pedido de documentos' : '', placeholder: 'Gerado do conteúdo se vazio', onChange: noop }),
+      h(Textarea, { key: 't', label: 'Conteúdo', rows: 3, value: edit ? 'Para dar andamento, preciso de: RG, CPF e comprovante de residência atualizado. Pode enviar por aqui mesmo.' : '', placeholder: 'Cole aqui o texto que você reutiliza', onChange: noop }),
+      h('div', { key: 'b', style: { display: 'flex', alignItems: 'center', gap: 8 } },
+        h(Button, { key: 's', variant: 'primary', icon: 'check', style: { flex: 1 } }, edit ? 'Salvar alterações' : 'Salvar'),
+        h(Button, { key: 'c', variant: 'ghost' }, 'Cancelar')));
+
+    const shell = (kids, extra) => h('div', Object.assign({ style: { position: 'relative', width: 360, display: 'flex', flexDirection: 'column', background: 'var(--surface-canvas)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-lg)', border: '1px solid var(--border-hairline)' } }, extra || {}), kids);
+
+    // ---- popup screens ----
+    const screenList = shell([
+      header(3),
+      topPad([h('div', { key: 's' }, search('')), h('div', { key: 'c' }, collapsedComposer)]),
+      listArea([
+        h('div', { key: 'a' }, sectionLabel('Itens deste site', 3)),
+        h('div', { key: 'b' }, col(domainItems.map(item))),
+        h('div', { key: 'c' }, sectionLabel('Itens globais', 2)),
+        h('div', { key: 'd' }, col(globalItems.map(item))),
+      ]),
+      footer,
+    ]);
+
+    const screenEmpty = shell([
+      header(0),
+      topPad([h('div', { key: 's' }, search('')), h('div', { key: 'c' }, collapsedComposer)]),
+      listArea([h(EmptyState, { key: 'e', title: 'Nenhum item salvo para este site ainda', description: 'Cole um texto, dê um título opcional e salve para reutilizar aqui.', action: h(Button, { size: 'sm', icon: 'plus' }, 'Salvar primeiro item') })]),
+      footer,
+    ]);
+
+    const screenNew = shell([
+      header(3),
+      topPad([h('div', { key: 's' }, search('')), h('div', { key: 'c' }, openComposer(false))]),
+      listArea([h('div', { key: 'a' }, sectionLabel('Itens deste site', 3)), h('div', { key: 'b' }, col(domainItems.slice(0, 2).map(item)))]),
+      footer,
+    ]);
+
+    const screenEdit = shell([
+      header(3),
+      topPad([h('div', { key: 's' }, search('')), h('div', { key: 'c' }, openComposer(true))]),
+      listArea([h('div', { key: 'a' }, sectionLabel('Itens deste site', 3)), h('div', { key: 'b' }, col(domainItems.slice(0, 2).map(item)))]),
+      footer,
+    ]);
+
+    const screenSearch = shell([
+      header(3),
+      topPad([h('div', { key: 's' }, search('protocolo')), h('div', { key: 'c' }, collapsedComposer)]),
+      listArea([
+        h('div', { key: 'a' }, sectionLabel('Itens deste site', 0)),
+        h('p', { key: 'p', style: { margin: '0 2px 4px', font: 'var(--type-body)', color: 'var(--text-muted)' } }, 'Nenhum item para web.whatsapp.com.'),
+        h('div', { key: 'b' }, sectionLabel('Itens globais', 1)),
+        h('div', { key: 'c' }, col([item(globalItems[0])])),
+      ]),
+      footer,
+    ]);
+
+    const screenSearchEmpty = shell([
+      header(3),
+      topPad([h('div', { key: 's' }, search('relatório anual')), h('div', { key: 'c' }, collapsedComposer)]),
+      listArea([h(EmptyState, { key: 'e', icon: 'search', title: 'Nenhum item encontrado', description: 'Nada corresponde a "relatório anual".' })]),
+      footer,
+    ]);
+
+    // settings / backup screen
+    const settingsScreen = shell([
+      h('div', { key: 'bar', style: { display: 'flex', alignItems: 'center', gap: 8, padding: '10px 12px', borderBottom: '1px solid var(--border-hairline)', background: 'var(--surface-card)' } },
+        h(IconButton, { key: 'b', icon: 'arrow-left', label: 'Voltar' }),
+        h('span', { key: 't', style: { font: 'var(--type-heading)', color: 'var(--text-strong)' } }, 'Configurações')),
+      h('div', { key: 'body', style: { padding: 14, display: 'flex', flexDirection: 'column', gap: 14, background: 'var(--surface-canvas)' } },
+        h('div', { key: 'p', style: { display: 'flex', gap: 10, padding: 12, borderRadius: 'var(--radius-md)', background: 'var(--green-50)', border: '1px solid var(--green-100)' } },
+          h(Icon, { key: 'i', name: 'shield-check', size: 20, style: { color: 'var(--text-brand)', flexShrink: 0 } }),
+          h('div', { key: 'd' },
+            h('p', { key: 'a', style: { margin: 0, font: 'var(--fw-semibold) var(--text-sm)/1.3 var(--font-ui)', color: 'var(--green-900)' } }, 'Seus dados ficam neste navegador'),
+            h('p', { key: 'b', style: { margin: '3px 0 0', font: 'var(--fw-regular) var(--text-xs)/1.45 var(--font-ui)', color: 'var(--text-brand)' } }, 'Local-first por padrão. Nada é enviado para servidores.'))),
+        h('div', { key: 'bk' },
+          sectionLabel('Backup'),
+          h('div', { key: 'r', style: { display: 'flex', gap: 8, marginTop: 6 } },
+            h(Button, { key: 'e', variant: 'secondary', icon: 'download', style: { flex: 1 } }, 'Exportar JSON'),
+            h(Button, { key: 'i', variant: 'secondary', icon: 'upload', style: { flex: 1 } }, 'Importar JSON'))),
+        h('div', { key: 'st', style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 4, borderTop: '1px solid var(--border-hairline)' } },
+          h('span', { key: 'a', style: { font: 'var(--type-meta)', color: 'var(--text-muted)' } }, '5 itens salvos'),
+          h('span', { key: 'b', style: { font: 'var(--type-meta)', color: 'var(--text-muted)' } }, 'v0.1.0'))),
+    ]);
+
+    // copied state with toast
+    const copiedFirst = Object.assign({}, domainItems[0], { copied: true });
+    const screenCopied = shell([
+      header(3),
+      topPad([h('div', { key: 's' }, search('')), h('div', { key: 'c' }, collapsedComposer)]),
+      listArea([
+        h('div', { key: 'a' }, sectionLabel('Itens deste site', 3)),
+        h('div', { key: 'b' }, col([item(copiedFirst), item(domainItems[1]), item(domainItems[2])])),
+      ]),
+      footer,
+      h('div', { key: 'toast', style: { position: 'absolute', left: 0, right: 0, bottom: 14, display: 'flex', justifyContent: 'center', pointerEvents: 'none' } },
+        h(Toast, { tone: 'success', icon: 'copy' }, 'Copiado para a área de transferência')),
+    ]);
+
+    // ---- onboarding tab ----
+    const stepCard = (n, icon, title, desc) => h('div', { key: n, style: { background: 'var(--surface-card)', border: '1px solid var(--border-hairline)', borderRadius: 'var(--radius-lg)', padding: 20, display: 'flex', flexDirection: 'column', gap: 10, boxShadow: 'var(--shadow-xs)' } },
+      h('span', { key: 'i', style: { display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 'var(--radius-md)', background: 'var(--green-50)', color: 'var(--text-brand)', border: '1px solid var(--green-100)' } }, h(Icon, { name: icon, size: 20 })),
+      h('div', { key: 'n', style: { font: 'var(--fw-bold) var(--text-2xs)/1 var(--font-ui)', letterSpacing: 'var(--ls-wide)', textTransform: 'uppercase', color: 'var(--text-faint)' } }, 'Passo ' + n),
+      h('div', { key: 't', style: { font: 'var(--fw-semibold) 16px/1.25 var(--font-ui)', color: 'var(--text-strong)' } }, title),
+      h('div', { key: 'd', style: { font: '400 14px/1.5 var(--font-ui)', color: 'var(--text-body)' } }, desc));
+
+    const screenOnboarding = h('div', { style: { width: '100%', background: 'radial-gradient(120% 80% at 85% -20%, #eef4ef 0%, rgba(238,244,239,0) 55%), var(--paper-50)', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '56px 48px 60px' } },
+      h('div', { key: 'b', style: { marginBottom: 28 } }, brandLockup(28)),
+      h('div', { key: 'eye', style: { font: 'var(--fw-bold) var(--text-2xs)/1 var(--font-ui)', letterSpacing: 'var(--ls-wide)', textTransform: 'uppercase', color: 'var(--text-brand)', marginBottom: 12 } }, 'Extensão instalada'),
+      h('h1', { key: 'h', style: { margin: 0, font: '700 34px/1.15 var(--font-ui)', letterSpacing: '-0.02em', color: 'var(--text-strong)', textAlign: 'center', maxWidth: 720 } }, 'Tudo pronto para copiar menos e colar melhor'),
+      h('p', { key: 'p', style: { margin: '14px 0 0', font: '400 16px/1.55 var(--font-ui)', color: 'var(--text-muted)', textAlign: 'center', maxWidth: 560 } }, 'Salve os textos que você repete e copie de volta com um clique — organizados pelo site em que você está.'),
+      h('div', { key: 'steps', style: { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, width: '100%', maxWidth: 860, marginTop: 36 } },
+        stepCard(1, 'globe', 'Contexto por site', 'Cada site mostra só os textos salvos para ele. Sem listas infinitas para rolar.'),
+        stepCard(2, 'plus', 'Salve em segundos', 'Cole o texto, dê um título opcional e salve. Pronto para reutilizar.'),
+        stepCard(3, 'copy', 'Copie com 1 clique', 'Reutilize sem reescrever — direto da lista, na hora.')),
+      h('div', { key: 'priv', style: { display: 'flex', alignItems: 'center', gap: 10, marginTop: 28, padding: '12px 16px', borderRadius: 'var(--radius-md)', background: 'var(--green-50)', border: '1px solid var(--green-100)', maxWidth: 860 } },
+        h(Icon, { key: 'i', name: 'shield-check', size: 18, style: { color: 'var(--text-brand)', flexShrink: 0 } }),
+        h('span', { key: 't', style: { font: '400 14px/1.45 var(--font-ui)', color: 'var(--green-900)' } }, 'Seus dados ficam neste navegador. Local-first por padrão. Nada é enviado para servidores.')),
+      h('div', { key: 'cta', style: { display: 'flex', alignItems: 'center', gap: 12, marginTop: 32 } },
+        h(Button, { key: 'a', variant: 'primary', size: 'lg', icon: 'check' }, 'Começar a salvar'),
+        h(Button, { key: 'b', variant: 'ghost', size: 'lg' }, 'Ver no GitHub')),
+      h('div', { key: 'hint', style: { display: 'flex', alignItems: 'center', gap: 7, marginTop: 20, font: '400 13px/1 var(--font-ui)', color: 'var(--text-muted)' } },
+        h(Icon, { key: 'i', name: 'plus', size: 14 }), 'Dica: fixe o ícone na barra do navegador para abrir ainda mais rápido.'));
+
+    // ---- options / manager page ----
+    const chip = (active, icon, label) => h('button', { key: label, type: 'button', style: { display: 'inline-flex', alignItems: 'center', gap: 6, height: 32, padding: '0 12px', borderRadius: 'var(--radius-pill)', cursor: 'pointer', border: '1px solid ' + (active ? 'var(--green-500)' : 'var(--border-default)'), background: active ? 'var(--green-50)' : 'var(--surface-card)', color: active ? 'var(--text-brand)' : 'var(--text-body)', font: 'var(--fw-semibold) 13px/1 var(--font-ui)' } },
+      icon ? h(Icon, { key: 'i', name: icon, size: 14 }) : null, label);
+
+    const optItem = (it) => h(ClipboardItem, { key: it.id, title: it.title, content: it.content, scope: it.scope, favorite: !!it.favorite, meta: it.meta, onCopy: noop, onEdit: noop, onDelete: noop, onToggleFavorite: noop, style: { width: '100%' } });
+    const domainBlock = (badge, count, arr) => h('div', { key: badge.label, style: { marginBottom: 24 } },
+      h('div', { key: 'h', style: { display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 } },
+        h(Badge, { key: 'b', tone: badge.tone, mono: badge.mono, icon: badge.icon }, badge.label),
+        h('span', { key: 'c', style: { font: 'var(--type-meta)', color: 'var(--text-muted)' } }, count + (count === 1 ? ' item' : ' itens'))),
+      h('div', { key: 'g', style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 } }, arr.map(optItem)));
+
+    const waItems = domainItems;
+    const tjItems = [
+      { id: 't1', scope: 'domain', title: 'Pedido de protocolo', content: 'Por gentileza, informe o número de protocolo para localizar seu atendimento.', meta: 'Copiado há 3 dias' },
+      { id: 't2', scope: 'domain', title: 'Juntada de documentos', content: 'Requer-se a juntada dos documentos anexos para a devida instrução do feito.', meta: 'Criado há 2 semanas' },
+    ];
+
+    const sideCard = h('div', { style: { width: 280, flex: 'none', display: 'flex', flexDirection: 'column', gap: 16 } },
+      h('div', { key: 'p', style: { background: 'var(--green-50)', border: '1px solid var(--green-100)', borderRadius: 'var(--radius-lg)', padding: 16, display: 'flex', flexDirection: 'column', gap: 8 } },
+        h('div', { key: 'r', style: { display: 'flex', alignItems: 'center', gap: 8 } }, h(Icon, { name: 'shield-check', size: 18, style: { color: 'var(--text-brand)' } }), h('span', { style: { font: 'var(--fw-semibold) 14px/1 var(--font-ui)', color: 'var(--green-900)' } }, 'Local-first')),
+        h('p', { key: 't', style: { margin: 0, font: '400 13px/1.5 var(--font-ui)', color: 'var(--text-brand)' } }, 'Seus dados ficam neste navegador. Faça um backup para levar para outro computador.')),
+      h('div', { key: 's', style: { background: 'var(--surface-card)', border: '1px solid var(--border-hairline)', borderRadius: 'var(--radius-lg)', padding: 16, display: 'flex', flexDirection: 'column', gap: 10 } },
+        h('div', { key: 'l', style: { font: 'var(--fw-bold) var(--text-2xs)/1 var(--font-ui)', letterSpacing: 'var(--ls-wide)', textTransform: 'uppercase', color: 'var(--text-muted)' } }, 'Resumo'),
+        ...[['Total de itens', '7'], ['Sites', '2'], ['Globais', '2'], ['Favoritos', '2']].map((r, i) => h('div', { key: i, style: { display: 'flex', justifyContent: 'space-between', font: '400 14px/1 var(--font-ui)', color: 'var(--text-body)' } }, h('span', { key: 'a' }, r[0]), h('span', { key: 'b', style: { font: 'var(--fw-semibold) 14px/1 var(--font-mono)', color: 'var(--text-strong)' } }, r[1])))));
+
+    const screenOptions = h('div', { style: { width: '100%', background: 'var(--surface-canvas)', display: 'flex', flexDirection: 'column', minHeight: 720 } },
+      h('div', { key: 'bar', style: { display: 'flex', alignItems: 'center', gap: 16, padding: '14px 24px', background: 'var(--surface-card)', borderBottom: '1px solid var(--border-hairline)' } },
+        h('div', { key: 'l' }, brandLockup(22)),
+        h('div', { key: 'sp', style: { flex: 1 } }),
+        h('div', { key: 'se', style: { width: 320 } }, h(SearchInput, { value: '', onChange: noop, onClear: noop, placeholder: 'Buscar em todos os itens' })),
+        h(Button, { key: 'e', variant: 'secondary', icon: 'download' }, 'Exportar'),
+        h(Button, { key: 'i', variant: 'secondary', icon: 'upload' }, 'Importar')),
+      h('div', { key: 'body', style: { display: 'flex', gap: 28, padding: 28, alignItems: 'flex-start' } },
+        h('div', { key: 'main', style: { flex: 1, minWidth: 0 } },
+          h('div', { key: 'title', style: { display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 6 } },
+            h('h2', { key: 'h', style: { margin: 0, font: '700 22px/1.2 var(--font-ui)', letterSpacing: '-0.01em', color: 'var(--text-strong)' } }, 'Seus itens'),
+            h('span', { key: 'c', style: { font: 'var(--type-meta)', color: 'var(--text-muted)' } }, '7 itens em 2 sites')),
+          h('div', { key: 'chips', style: { display: 'flex', gap: 8, margin: '14px 0 22px', flexWrap: 'wrap' } },
+            chip(true, null, 'Todos'), chip(false, 'star', 'Favoritos'), chip(false, 'globe', 'Globais'), chip(false, 'filter', 'web.whatsapp.com'), chip(false, 'filter', 'portal.tjsp.jus.br')),
+          domainBlock({ label: 'web.whatsapp.com', tone: 'neutral', mono: true }, 3, waItems),
+          domainBlock({ label: 'portal.tjsp.jus.br', tone: 'neutral', mono: true }, 2, tjItems),
+          domainBlock({ label: 'Itens globais', tone: 'global', icon: 'globe' }, 2, globalItems)),
+        sideCard));
+
+    return { screenList, screenEmpty, screenNew, screenEdit, screenSearch, screenSearchEmpty, screenSettings: settingsScreen, screenCopied, screenOnboarding, screenOptions };
+  }
+}
+</script>
+</body>
+</html>

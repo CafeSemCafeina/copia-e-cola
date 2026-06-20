@@ -1,0 +1,25 @@
+/* ============================================================
+   SPACING & SIZING — Copia e Cola
+   4px base grid. Compact density for a tool opened dozens of
+   times a day. Radii, shadows and motion live in their own files.
+   ============================================================ */
+:root {
+  --space-0:  0;
+  --space-1:  2px;
+  --space-2:  4px;
+  --space-3:  6px;
+  --space-4:  8px;
+  --space-5:  12px;
+  --space-6:  16px;
+  --space-7:  20px;
+  --space-8:  24px;
+  --space-10: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Sizing */
+  --popup-width: 360px;
+  --control-h-sm: 28px;
+  --control-h-md: 34px;
+  --control-h-lg: 40px;
+}

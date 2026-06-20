@@ -1,0 +1,12 @@
+/* ============================================================
+   WEBFONTS — Copia e Cola
+   NOTE: No brand fonts were provided with the project. These are
+   Google Fonts chosen to match the utilitarian, direct, Brazilian
+   tone of the product:
+     - Hanken Grotesk  (UI)
+     - IBM Plex Mono   (saved content, domains, metadata)
+   If brand fonts exist, drop their .woff2 files in assets/fonts/
+   and replace this @import with local @font-face rules.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');

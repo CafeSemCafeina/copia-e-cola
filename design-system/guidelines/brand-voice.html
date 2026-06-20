@@ -1,0 +1,44 @@
+<!-- @dsCard group="Brand" viewport="700x230" name="Voice & Principles" subtitle="Direct, operational Brazilian Portuguese — verbs, not marketing" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--surface-card); font-family: var(--font-ui); color: var(--text-strong); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  h4 { margin: 0 0 10px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
+  .line { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 13px; }
+  .yes { color: var(--text-brand); font-weight: 700; }
+  .no { color: var(--text-danger); font-weight: 700; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+  .chip { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--text-body); background: var(--surface-sunken); border: 1px solid var(--border-hairline); border-radius: var(--radius-pill); padding: 3px 10px; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div>
+      <h4>Tom</h4>
+      <div class="line"><span class="yes">✓</span> Direto e operacional</div>
+      <div class="line"><span class="yes">✓</span> Verbos no infinitivo — comandos</div>
+      <div class="line"><span class="yes">✓</span> Você, nunca "nós da equipe"</div>
+      <div class="line"><span class="no">✕</span> Marketing, hype, emoji</div>
+      <div class="line"><span class="no">✕</span> Jargão de SaaS / "IA mágica"</div>
+    </div>
+    <div>
+      <h4>Vocabulário</h4>
+      <div class="chips">
+        <span class="chip">Salvar</span>
+        <span class="chip">Copiar</span>
+        <span class="chip">Editar</span>
+        <span class="chip">Excluir</span>
+        <span class="chip">Itens deste site</span>
+        <span class="chip">Itens globais</span>
+        <span class="chip">Buscar</span>
+      </div>
+      <h4 style="margin-top:16px">Estado vazio</h4>
+      <p style="margin:0;font-size:13px;color:var(--text-body)">“Nenhum item salvo para este site ainda.”</p>
+    </div>
+  </div>
+</body>
+</html>

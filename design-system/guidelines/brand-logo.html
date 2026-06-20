@@ -1,0 +1,24 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Logo" subtitle="Logomark (source → context) + wordmark, on light and brand surfaces" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--surface-canvas); font-family: var(--font-ui); }
+  .row { display: flex; gap: 16px; align-items: stretch; }
+  .tile { flex: 1; display: flex; align-items: center; justify-content: center; gap: 14px; height: 120px; border-radius: var(--radius-lg); border: 1px solid var(--border-hairline); }
+  .tile.brand { background: var(--green-700); border-color: transparent; }
+  .tile.card { background: var(--surface-card); }
+  .tile.soft { background: var(--green-50); }
+  img { display: block; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="tile card"><img src="../assets/wordmark.svg" width="186" alt="Copia e Cola"></div>
+    <div class="tile soft"><img src="../assets/logomark.svg" width="56" alt="logomark"></div>
+    <div class="tile brand"><img src="../assets/logomark.svg" width="56" alt="logomark"><span style="font:700 20px var(--font-ui);letter-spacing:-.01em;color:#fff">Copia e Cola</span></div>
+  </div>
+</body>
+</html>

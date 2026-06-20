@@ -1,0 +1,29 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Brand — Green" subtitle="Pine-green primary: privacy, confirmation, a quiet nod to Brazil" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 18px; background: var(--surface-canvas); font-family: var(--font-ui); }
+  .row { display: flex; gap: 10px; }
+  .sw { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 52px; border-radius: var(--radius-md); border: 1px solid rgba(0,0,0,0.06); }
+  .name { font-size: 11px; font-weight: 600; color: var(--text-strong); }
+  .val { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+  .star { font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-brand); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--green-50)"></div><span class="name">50</span><span class="val">#e7f3ec</span></div>
+    <div class="sw"><div class="chip" style="background:var(--green-100)"></div><span class="name">100</span><span class="val">#c8e6d3</span></div>
+    <div class="sw"><div class="chip" style="background:var(--green-200)"></div><span class="name">200</span><span class="val">#97d1ad</span></div>
+    <div class="sw"><div class="chip" style="background:var(--green-400)"></div><span class="name">400</span><span class="val">#2f9d6b</span></div>
+    <div class="sw"><div class="chip" style="background:var(--green-500); box-shadow: var(--shadow-sm)"></div><span class="star">Primary 500</span><span class="val">#1b8a5e</span></div>
+    <div class="sw"><div class="chip" style="background:var(--green-600)"></div><span class="name">600 hover</span><span class="val">#157049</span></div>
+    <div class="sw"><div class="chip" style="background:var(--green-700)"></div><span class="name">700 press</span><span class="val">#0f5638</span></div>
+    <div class="sw"><div class="chip" style="background:var(--green-900)"></div><span class="name">900</span><span class="val">#0a3a26</span></div>
+  </div>
+</body>
+</html>

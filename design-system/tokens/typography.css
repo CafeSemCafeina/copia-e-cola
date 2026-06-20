@@ -1,0 +1,48 @@
+/* ============================================================
+   TYPOGRAPHY — Copia e Cola
+   Hanken Grotesk for UI (warm, legible, a little personality).
+   IBM Plex Mono for saved content, domains and metadata — it reads
+   as literal, machine-precise text you copy and paste.
+   ============================================================ */
+:root {
+  /* Families */
+  --font-ui:   'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Weights */
+  --fw-regular:   400; /* @kind font */
+  --fw-medium:    500; /* @kind font */
+  --fw-semibold:  600; /* @kind font */
+  --fw-bold:      700; /* @kind font */
+  --fw-extrabold: 800; /* @kind font */
+
+  /* Sizes — compact, popup-first; large sizes for docs/specimens */
+  --text-2xs:  11px;
+  --text-xs:   12px;
+  --text-sm:   13px;   /* popup body baseline */
+  --text-base: 14px;
+  --text-md:   16px;
+  --text-lg:   18px;
+  --text-xl:   22px;
+  --text-2xl:  28px;
+  --text-3xl:  36px;
+
+  /* Line heights */
+  --lh-tight:  1.15; /* @kind font */
+  --lh-snug:   1.3;  /* @kind font */
+  --lh-normal: 1.5;  /* @kind font */
+
+  /* Letter spacing */
+  --ls-tight:  -0.014em; /* @kind font */
+  --ls-normal: 0;        /* @kind font */
+  --ls-wide:   0.02em;   /* small uppercase labels @kind font */
+  --ls-caps:   0.06em;   /* eyebrows @kind font */
+
+  /* ---- Composite roles (font shorthand: weight size/lh family) ---- */
+  --type-heading: var(--fw-semibold) var(--text-lg)/1.2 var(--font-ui);
+  --type-title:   var(--fw-semibold) var(--text-base)/1.3 var(--font-ui);
+  --type-body:    var(--fw-regular) var(--text-sm)/1.5 var(--font-ui);
+  --type-label:   var(--fw-medium) var(--text-sm)/1.3 var(--font-ui);
+  --type-meta:    var(--fw-medium) var(--text-xs)/1.3 var(--font-ui);
+  --type-mono:    var(--fw-regular) var(--text-sm)/1.4 var(--font-mono);
+}

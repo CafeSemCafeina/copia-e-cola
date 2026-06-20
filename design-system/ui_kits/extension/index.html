@@ -1,0 +1,80 @@
+<!-- @dsCard group="Extension" viewport="900x600" name="Popup — list, save, search, settings" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copia e Cola — Popup</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--surface-canvas); font-family: var(--font-ui); color: var(--text-strong); }
+  .scene {
+    position: relative; min-height: 100vh; padding: 0;
+    display: flex; flex-direction: column;
+    background:
+      radial-gradient(120% 80% at 80% -10%, #eef4ef 0%, rgba(238,244,239,0) 55%),
+      var(--paper-100);
+  }
+  /* faux browser chrome */
+  .chrome { background: var(--paper-50); border-bottom: 1px solid var(--border-hairline); padding: 10px 14px; display: flex; align-items: center; gap: 12px; }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .addr { flex: 1; display: flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; background: var(--surface-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 12px; color: var(--text-body); max-width: 460px; }
+  .ext { display: flex; align-items: center; gap: 6px; }
+  .ext-btn { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: var(--radius-sm); background: var(--green-50); border: 1px solid var(--green-100); cursor: pointer; }
+  .ext-btn svg { display: block; }
+  /* faux page body */
+  .page { flex: 1; position: relative; padding: 26px 28px; }
+  .ghost { max-width: 520px; }
+  .gh { height: 11px; border-radius: 5px; background: var(--paper-200); margin-bottom: 12px; }
+  .anchor { position: absolute; top: 0; right: 22px; }
+  .anchor::before { content: ''; position: absolute; top: -7px; right: 12px; width: 12px; height: 12px; background: var(--surface-canvas); border-left: 1px solid var(--border-hairline); border-top: 1px solid var(--border-hairline); transform: rotate(45deg); }
+  .hint { position: absolute; left: 28px; bottom: 22px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted); }
+  .kbd { font-family: var(--font-mono); font-size: 11px; background: var(--surface-card); border: 1px solid var(--border-hairline); border-radius: 5px; padding: 2px 6px; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="scene">
+  <div class="chrome">
+    <div class="dots"><span class="dot" style="background:#e1655b"></span><span class="dot" style="background:#e6b34a"></span><span class="dot" style="background:#5aab6e"></span></div>
+    <div class="addr">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6f6c60" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+      web.whatsapp.com
+    </div>
+    <div class="ext">
+      <div class="ext-btn" title="Copia e Cola">
+        <span style="position:relative;width:16px;height:16px;display:block">
+          <span style="position:absolute;left:0;top:0;width:10px;height:10px;border-radius:3px;border:1.6px solid var(--green-500);opacity:.5"></span>
+          <span style="position:absolute;right:0;bottom:0;width:10px;height:10px;border-radius:3px;background:var(--green-500)"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="ghost">
+      <div class="gh" style="width:38%"></div>
+      <div class="gh" style="width:92%"></div>
+      <div class="gh" style="width:80%"></div>
+      <div class="gh" style="width:86%"></div>
+      <div class="gh" style="width:55%"></div>
+    </div>
+    <div class="anchor" id="popup-root"></div>
+    <div class="hint">
+      <span>Extensão aberta sobre o site atual</span>
+    </div>
+  </div>
+</div>
+
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel" src="PopupApp.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('popup-root')).render(<PopupApp domain="web.whatsapp.com" />);
+</script>
+</body>
+</html>
