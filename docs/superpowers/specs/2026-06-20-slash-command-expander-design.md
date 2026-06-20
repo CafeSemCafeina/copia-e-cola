@@ -1,6 +1,8 @@
 # Slash Command Expander Design
 
-Date: 2026-06-20
+Data da decisão: 2026-06-20
+Depends on: docs/PRD.md; docs/adr/0003-product-packaging-and-pricing.md
+Decisor: David Fiocchi
 
 ## Goal
 

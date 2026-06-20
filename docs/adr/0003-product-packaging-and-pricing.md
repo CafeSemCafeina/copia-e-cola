@@ -1,5 +1,9 @@
 # ADR 0003 - Empacotamento e pricing do produto
 
+Data da decisão: 2026-06-20
+Depends on: docs/adr/0001-open-core-and-cloud-boundary.md; docs/adr/0002-brand-assets-read-only.md
+Decisor: David Fiocchi
+
 Status: accepted
 
 ## Contexto

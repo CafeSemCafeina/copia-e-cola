@@ -1,5 +1,9 @@
 # Indice do design system
 
+Data da decisão: 2026-06-20
+Depends on: design-system/README.md; docs/adr/0002-brand-assets-read-only.md
+Decisor: David Fiocchi
+
 Esta pasta contem a extracao organizada dos pacotes locais:
 
 - `Copia e Cola Design System.zip`

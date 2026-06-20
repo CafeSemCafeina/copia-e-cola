@@ -1,5 +1,9 @@
 # Copia e Cola
 
+Data da decisão: 2026-06-20
+Depends on: docs/README.md; docs/repository-boundaries.md
+Decisor: David Fiocchi
+
 Copia e Cola é um micro SaaS open-source e local-first para guardar textos, prompts, protocolos e modelos de resposta por contexto de uso no navegador.
 
 A ideia inicial é simples: ao abrir um site, o usuário vê apenas os itens salvos para aquele domínio. Assim, conteúdos usados no WhatsApp Web, em tribunais, CRMs, portais públicos ou ferramentas internas não ficam misturados em uma biblioteca genérica.

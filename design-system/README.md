@@ -1,5 +1,9 @@
 # Copia e Cola — Design System
 
+Data da decisão: 2026-06-20
+Depends on: docs/adr/0002-brand-assets-read-only.md
+Decisor: David Fiocchi
+
 A complete brand and UI design system for **Copia e Cola**, an open-source, local-first browser extension that stores and reuses text by context. Open a site (WhatsApp Web, a court portal, a CRM, an internal tool) and the extension shows only the texts, prompts, protocols and templates saved for that domain — a smart, per-site clipboard.
 
 This repository is the source of truth for the brand: tokens, fonts, reusable React components, foundation specimens, and a high-fidelity recreation of the extension popup.

@@ -1,3 +1,7 @@
+Data da decisão: 2026-06-20
+Depends on: design-system/README.md; design-system/ASSET_LICENSE.md
+Decisor: David Fiocchi
+
 Compact icon-only control for per-item actions — copiar, editar, excluir, favoritar. Always pass a `label`.
 
 ```jsx

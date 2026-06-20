@@ -1,6 +1,22 @@
 # Documentacao
 
+Data da decisão: 2026-06-20
+Depends on: docs/adr/0001-open-core-and-cloud-boundary.md; docs/adr/0002-brand-assets-read-only.md; docs/adr/0003-product-packaging-and-pricing.md
+Decisor: David Fiocchi
+
 Esta pasta separa produto, decisoes, validacao e historico.
+
+## Metadados obrigatorios
+
+Todo documento de documentacao ou decisao deve declarar, logo abaixo do titulo quando houver titulo:
+
+```md
+Data da decisão: AAAA-MM-DD
+Depends on: caminho/ou/N/A
+Decisor: Nome do decisor
+```
+
+Quando uma decisao nova conflitar com uma decisao antiga, a decisao mais nova substitui automaticamente a antiga. A data usada para resolver esse conflito e `Data da decisão`.
 
 ## Produto
 

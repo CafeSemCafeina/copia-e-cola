@@ -1,5 +1,9 @@
 # Specs
 
+Data da decisão: 2026-06-20
+Depends on: docs/README.md; docs/repository-boundaries.md
+Decisor: David Fiocchi
+
 Esta pasta contém as specs versionadas do Copia e Cola.
 
 Cada spec deve ser pequena, verificável e orientada a um incremento fechado do MVP.

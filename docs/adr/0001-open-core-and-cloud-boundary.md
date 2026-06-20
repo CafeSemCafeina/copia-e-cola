@@ -1,5 +1,9 @@
 # ADR 0001 - Core publico e cloud privado
 
+Data da decisão: 2026-06-20
+Depends on: docs/PRD.md
+Decisor: David Fiocchi
+
 Status: accepted
 
 ## Contexto

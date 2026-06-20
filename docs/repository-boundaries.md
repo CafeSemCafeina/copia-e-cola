@@ -1,5 +1,9 @@
 # Fronteiras do repositorio
 
+Data da decisão: 2026-06-20
+Depends on: docs/adr/0001-open-core-and-cloud-boundary.md; docs/adr/0002-brand-assets-read-only.md; docs/adr/0003-product-packaging-and-pricing.md
+Decisor: David Fiocchi
+
 Status: politica operacional baseada em ADRs.
 
 Decisoes relacionadas:
@@ -7,6 +11,12 @@ Decisoes relacionadas:
 - `docs/adr/0001-open-core-and-cloud-boundary.md`;
 - `docs/adr/0002-brand-assets-read-only.md`;
 - `docs/adr/0003-product-packaging-and-pricing.md`.
+
+Regra de precedencia:
+
+- decisoes mais novas substituem automaticamente decisoes antigas quando houver conflito;
+- a ordenacao e feita por `Data da decisão`;
+- `Depends on` registra dependencias relevantes, mas nao impede uma decisao posterior de substituir uma anterior.
 
 Este repositorio publico existe para tres objetivos:
 

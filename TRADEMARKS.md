@@ -1,5 +1,9 @@
 # Politica de marca
 
+Data da decisão: 2026-06-20
+Depends on: docs/adr/0002-brand-assets-read-only.md
+Decisor: David Fiocchi
+
 O codigo do Copia e Cola e distribuido sob a licenca MIT, mas a marca Copia e Cola nao faz parte da licenca de software.
 
 Voce pode usar, copiar, modificar, publicar, distribuir e vender copias do codigo conforme os termos da licenca MIT.

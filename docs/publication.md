@@ -1,5 +1,9 @@
 # Publicação
 
+Data da decisão: 2026-06-20
+Depends on: docs/repository-boundaries.md; specs/011-chrome-web-store-assets.md; specs/012-landing-page-publica.md
+Decisor: David Fiocchi
+
 Este repositório está preparado para duas publicações separadas: a landing page pública e a extensão para Chrome/Edge.
 
 ## Versão atual

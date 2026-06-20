@@ -1,5 +1,9 @@
 # Legado - mapeamento do ZIP de design
 
+Data da decisão: 2026-06-20
+Depends on: docs/adr/0001-open-core-and-cloud-boundary.md; specs/014-react-wxt-migration.md
+Decisor: David Fiocchi
+
 Status: arquivo historico.
 
 Este documento substitui o antigo `docs/zip-asset-map.md`, que continha instrucoes de implementacao da fase vanilla em `extension/`. Essa pasta foi removida depois da migracao para React/WXT.

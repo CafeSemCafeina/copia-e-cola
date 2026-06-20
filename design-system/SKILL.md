@@ -1,3 +1,7 @@
+Data da decisão: 2026-06-20
+Depends on: design-system/README.md
+Decisor: David Fiocchi
+
 ---
 name: copia-e-cola-design
 description: Use this skill to generate well-branded interfaces and assets for Copia e Cola, either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and UI kit components for prototyping.

@@ -1,5 +1,9 @@
 # PRD - Copia e Cola
 
+Data da decisão: 2026-06-20
+Depends on: docs/adr/0001-open-core-and-cloud-boundary.md; docs/adr/0003-product-packaging-and-pricing.md
+Decisor: David Fiocchi
+
 Status: artefato versionado de produto e portfólio.
 
 Este PRD descreve a tese do produto e o recorte do MVP local. Decisões formais de arquitetura, marca, cloud e monetização ficam registradas em ADRs em `docs/adr/`.

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { execSync } from "node:child_process";
 import { join } from "node:path";
 
 const root = process.cwd();
@@ -56,5 +57,19 @@ assert.ok(!prd.includes("não versionado por enquanto"), "PRD nao deve se declar
 
 assert.ok(!exists("docs/product-packaging-pricing.md"), "decisoes de produto/pricing devem ficar em ADR");
 assert.ok(!exists("docs/zip-asset-map.md"), "mapa antigo do ZIP deve ficar arquivado, nao na raiz de docs");
+
+const markdownFiles = execSync("git ls-files", { encoding: "utf8" })
+  .split(/\r?\n/)
+  .filter((file) => file.endsWith(".md"));
+
+for (const file of markdownFiles) {
+  const body = read(file);
+  assert.ok(/^Data da decisão: \d{4}-\d{2}-\d{2}$/m.test(body), `${file} deve declarar Data da decisão`);
+  assert.ok(/^Depends on: .+$/m.test(body), `${file} deve declarar Depends on`);
+  assert.ok(/^Decisor: .+$/m.test(body), `${file} deve declarar Decisor`);
+}
+
+const docsReadme = read("docs/README.md");
+assert.ok(docsReadme.includes("decisao mais nova substitui automaticamente a antiga"), "docs/README.md deve declarar regra de substituicao por data");
 
 console.log("repo boundary validation ok");

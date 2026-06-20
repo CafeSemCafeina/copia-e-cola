@@ -1,5 +1,9 @@
 # Checklist de validação local
 
+Data da decisão: 2026-06-20
+Depends on: docs/publication.md; specs/014-react-wxt-migration.md
+Decisor: David Fiocchi
+
 Use a pasta `dist/` como extensão sem compactação no Chrome ou Edge. Gere essa pasta antes com `npm run build`.
 
 ## Instalação

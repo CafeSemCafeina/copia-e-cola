@@ -1,5 +1,9 @@
 # Copia e Cola - ficha da Chrome Web Store
 
+Data da decisão: 2026-06-20
+Depends on: docs/publication.md; docs/adr/0002-brand-assets-read-only.md
+Decisor: David Fiocchi
+
 ## Nome
 
 Copia e Cola — clipboard por site

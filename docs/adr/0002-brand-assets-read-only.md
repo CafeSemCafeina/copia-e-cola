@@ -1,5 +1,9 @@
 # ADR 0002 - Marca e assets como portfolio read-only
 
+Data da decisão: 2026-06-20
+Depends on: docs/adr/0001-open-core-and-cloud-boundary.md; TRADEMARKS.md
+Decisor: David Fiocchi
+
 Status: accepted
 
 ## Contexto

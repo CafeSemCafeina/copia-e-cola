@@ -1,3 +1,7 @@
+Data da decisão: 2026-06-20
+Depends on: design-system/README.md; design-system/ASSET_LICENSE.md
+Decisor: David Fiocchi
+
 The core product object — one saved snippet. The whole card copies on click; edit and delete reveal on hover; the star toggles favorite inline.
 
 ```jsx

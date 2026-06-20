@@ -1,5 +1,9 @@
 # Spec 013 - Validação visual e prontidão de publicação
 
+Data da decisão: 2026-06-20
+Depends on: specs/README.md; docs/PRD.md
+Decisor: David Fiocchi
+
 Status: Done
 
 ## Objetivo

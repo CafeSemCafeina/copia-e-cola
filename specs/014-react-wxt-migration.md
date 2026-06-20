@@ -1,5 +1,9 @@
 # Spec 014 - Migração para React/WXT
 
+Data da decisão: 2026-06-20
+Depends on: specs/README.md; docs/PRD.md
+Decisor: David Fiocchi
+
 Status: Done
 
 Nota pós-implementação: a migração foi concluída e a pasta legada `extension/` foi removida. A fonte publicável atual fica em `entrypoints/`, `src/` e `public/`.
