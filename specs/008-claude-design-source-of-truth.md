@@ -1,5 +1,9 @@
 # Spec 008 - Fonte visual Claude Design
 
+Data da decisão: 2026-06-20
+Depends on: specs/README.md; docs/PRD.md
+Decisor: David Fiocchi
+
 Status: Done
 
 ## Objetivo
@@ -17,7 +21,7 @@ Versionar a fonte visual completa gerada no Claude Design para que o produto rea
   - página de opções;
   - assets de Chrome Web Store;
   - copy da ficha.
-- Preservar `docs/zip-asset-map.md` como inventário do pacote local.
+- Preservar o inventário histórico do pacote local em `docs/archive/legacy-zip-asset-map.md`.
 
 ## Fora de escopo
 

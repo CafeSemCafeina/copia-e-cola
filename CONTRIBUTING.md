@@ -1,5 +1,9 @@
 # Contribuindo
 
+Data da decisão: 2026-06-20
+Depends on: README.md
+Decisor: David Fiocchi
+
 Obrigado por considerar contribuir com o Copia e Cola.
 
 ## Como contribuir

@@ -1,6 +1,12 @@
 # Spec 014 - Migração para React/WXT
 
+Data da decisão: 2026-06-20
+Depends on: specs/README.md; docs/PRD.md
+Decisor: David Fiocchi
+
 Status: Done
+
+Nota pós-implementação: a migração foi concluída e a pasta legada `extension/` foi removida. A fonte publicável atual fica em `entrypoints/`, `src/` e `public/`.
 
 ## Objetivo
 
@@ -69,9 +75,9 @@ O React deve ser usado apenas como runtime local da UI:
 
 ### Migração de Lógica
 
-- Migrar `extension/lib/domain.js` para `src/lib/domain.ts`.
-- Migrar `extension/lib/storage.js` para `src/lib/storage.ts`.
-- Migrar `extension/lib/backup.js` para `src/lib/backup.ts`.
+- Migrar a lógica de domínio para `src/lib/domain.ts`.
+- Migrar a lógica de storage para `src/lib/storage.ts`.
+- Migrar a lógica de backup para `src/lib/backup.ts`.
 - Preservar schema atual:
   - `STORAGE_KEY = "copiaEColaItems"`;
   - `SCHEMA_VERSION = 1`;
@@ -162,7 +168,7 @@ Recriar a página de opções em React:
 2. Introduzir WXT/React sem trocar o runtime publicado ainda.
    - Criar estrutura `entrypoints/` e `src/`.
    - Configurar build para gerar `dist/`.
-   - Manter `extension/` existente intacto até o build React reproduzir os fluxos principais.
+   - Durante a migração, manter o legado intacto até o build React reproduzir os fluxos principais.
 
 3. Migrar bibliotecas puras.
    - Portar `domain`, `storage` e `backup` para TypeScript.
@@ -182,7 +188,7 @@ Recriar a página de opções em React:
 6. Trocar fonte de publicação.
    - Fazer `npm run build` gerar o pacote publicável.
    - Atualizar scripts de validação para validar `dist/` como extensão final.
-   - Manter `extension/` como legado apenas se houver motivo; caso contrário, remover ou documentar como substituído.
+   - Remover o legado quando o build React estiver validado.
 
 7. Refinar pixel-perfect.
    - Ajustar tokens, espaçamentos, ícones e estados contra o Claude Design.

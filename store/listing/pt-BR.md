@@ -1,5 +1,9 @@
 # Copia e Cola - ficha da Chrome Web Store
 
+Data da decisão: 2026-06-20
+Depends on: docs/publication.md; docs/adr/0002-brand-assets-read-only.md
+Decisor: David Fiocchi
+
 ## Nome
 
 Copia e Cola — clipboard por site
@@ -55,4 +59,4 @@ Seus dados ficam no storage local do navegador. A extensão não exige conta, n�
 
 ## Decisão de ícones
 
-Os ícones da loja foram versionados em `store/icons/`. Os ícones runtime da extensão permanecem em `extension/assets/icons/` para evitar troca visual de manifest sem revisão manual em navegador; eles podem ser substituídos pelos ícones da loja em uma etapa separada se a validação visual aprovar.
+Os ícones da loja foram versionados em `store/icons/`. Os ícones runtime da extensão ficam em `public/assets/icons/` e entram no build WXT em `dist/assets/icons/`. Qualquer troca visual deve passar por revisão manual em navegador antes de publicação.

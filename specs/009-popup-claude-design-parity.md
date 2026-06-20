@@ -1,5 +1,9 @@
 # Spec 009 - Popup fiel ao Claude Design
 
+Data da decisão: 2026-06-20
+Depends on: specs/README.md; docs/PRD.md
+Decisor: David Fiocchi
+
 Status: Done
 
 ## Objetivo
@@ -8,7 +12,7 @@ Refinar o popup funcional da extensão até ele corresponder às telas geradas n
 
 ## Escopo
 
-- Ajustar `extension/popup/popup.html`, `popup.css` e `popup.js` para o layout de 360 px do design.
+- Ajustar o popup React/WXT em `entrypoints/popup/`, `src/components/` e `src/styles/popup.css` para o layout de 360 px do design.
 - Usar a hierarquia visual do Claude Design:
   - cabeçalho com marca, domínio e contagem;
   - busca sempre visível;

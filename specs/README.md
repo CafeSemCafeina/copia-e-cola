@@ -1,5 +1,9 @@
 # Specs
 
+Data da decisão: 2026-06-20
+Depends on: docs/README.md; docs/repository-boundaries.md
+Decisor: David Fiocchi
+
 Esta pasta contém as specs versionadas do Copia e Cola.
 
 Cada spec deve ser pequena, verificável e orientada a um incremento fechado do MVP.
@@ -30,4 +34,6 @@ Cada spec deve ser pequena, verificável e orientada a um incremento fechado do 
 
 ## Fonte visual atual
 
-Para as specs `008` a `013`, a referência canônica é o pacote local `Extensão copia e cola.zip`, mapeado em `docs/zip-asset-map.md`, especialmente o arquivo `Telas da Extensão.dc.html`.
+Para as specs `008` a `013`, a referência canônica versionada é `design-system/screens/telas-da-extensao.html`.
+
+O pacote local original `Extensão copia e cola.zip` fica fora do Git. O resumo histórico do ZIP está arquivado em `docs/archive/legacy-zip-asset-map.md` e não deve ser usado como plano de implementação atual.

@@ -10,4 +10,6 @@ export type ClipboardItem = {
   createdAt: string;
   updatedAt: string;
   lastCopiedAt: string | null;
+  commandEnabled: boolean;
+  commandTrigger: string | null;
 };

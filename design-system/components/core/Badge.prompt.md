@@ -1,3 +1,7 @@
+Data da decisão: 2026-06-20
+Depends on: design-system/README.md; design-system/ASSET_LICENSE.md
+Decisor: David Fiocchi
+
 Small pill for counts and statuses. `global` (blue) = cross-site item, `amber` = favorite, `mono` for a literal domain value.
 
 ```jsx

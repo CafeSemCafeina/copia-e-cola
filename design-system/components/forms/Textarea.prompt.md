@@ -1,3 +1,7 @@
+Data da decisão: 2026-06-20
+Depends on: design-system/README.md; design-system/ASSET_LICENSE.md
+Decisor: David Fiocchi
+
 Multi-line field for the content being saved. Defaults to monospace because items are literal text to paste back out.
 
 ```jsx

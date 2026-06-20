@@ -113,7 +113,7 @@ async function openPopup(context, extensionId, activeUrl) {
   return popup;
 }
 
-async function saveItem(page, title, content, global = false) {
+async function saveItem(page, title, content, global = false, commandTrigger = "") {
   if (await page.locator("#item-form").isHidden()) {
     await page.getByRole("button", { name: "Novo item para este site" }).click();
   }
@@ -125,9 +125,17 @@ async function saveItem(page, title, content, global = false) {
     await page.locator("#global-input").check();
   }
 
+  if (commandTrigger) {
+    await page.locator("#command-enabled-input").check();
+    await page.locator("#command-trigger-input").fill(commandTrigger);
+  }
+
   await page.getByRole("button", { name: "Salvar", exact: true }).click();
   await page.getByText("Item salvo.").waitFor();
   await page.locator(".clipboard-item__title", { hasText: title }).waitFor();
+  if (commandTrigger) {
+    await page.locator(".clipboard-item", { hasText: title }).locator(".badge", { hasText: commandTrigger }).waitFor();
+  }
 }
 
 async function itemCard(page, title) {
@@ -146,7 +154,7 @@ try {
   assert.equal(await popup.title(), "Copia e Cola");
   await assert.doesNotReject(() => popup.getByRole("heading", { name: "web.whatsapp.com" }).waitFor());
 
-  await saveItem(popup, "Saudação WhatsApp", "Olá! Já vou te ajudar por aqui.");
+  await saveItem(popup, "Saudação WhatsApp", "Olá! Já vou te ajudar por aqui.", false, "/saudacao-whatsapp");
   let saudacao = await itemCard(popup, "Saudação WhatsApp");
   await saudacao.locator(".clipboard-item__copy").click();
   await popup.getByText("Copiado para a área de transferência.").waitFor();
