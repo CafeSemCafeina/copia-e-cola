@@ -25,35 +25,40 @@
       <section class="section legal">
         <p class="eyebrow">Privacidade</p>
         <h1>Política de Privacidade</h1>
-        <p>Última atualização: 20 de junho de 2026.</p>
+        <p>Última atualização: 21 de junho de 2026.</p>
 
         <h2>Resumo</h2>
-        <p>O Copia e Cola é uma extensão com arquitetura <strong>local-first</strong>. Todo o processamento e armazenamento ocorrem exclusivamente no seu dispositivo. Nós não coletamos, não lemos e não temos acesso aos textos que você copia ou salva. Seus dados não saem do seu navegador.</p>
+        <p>O Copia e Cola é uma extensão com arquitetura <strong>local-first</strong>. Todo o processamento e armazenamento ocorrem exclusivamente no seu dispositivo. Nós não coletamos, não lemos e não temos acesso aos textos que você salva ou expande em páginas da web. Seus dados não são enviados para servidores.</p>
 
         <h2>1. Quais dados são armazenados e onde?</h2>
-        <p>A extensão salva localmente apenas os dados que você insere explicitamente: textos, títulos, informações de domínio (URL), marcações de fixado e datas operacionais. Estes dados são armazenados estritamente no armazenamento local do seu navegador. Nenhum dado é enviado para a nuvem ou servidores externos.</p>
+        <p>A extensão salva localmente apenas os dados que você insere explicitamente ou gera ao usar o produto: textos reutilizáveis, títulos, domínio/contexto de uso, comando opcional de expansão, marcação de item fixado e datas operacionais como criação ou atualização. Esses dados são armazenados no armazenamento local do seu navegador. Nenhum dado é enviado para a nuvem ou servidores externos.</p>
 
         <h2>2. Coleta de Dados e Telemetria</h2>
-        <p>Adotamos uma abordagem de privacidade por design. A extensão não coleta telemetria, não rastreia seu comportamento, não grava logs de erro remotamente e não utiliza ferramentas de analytics de terceiros. Sua navegação permanece 100% privada e anônima.</p>
+        <p>Adotamos uma abordagem de privacidade por design. A extensão não exige conta, não coleta telemetria, não rastreia seu comportamento, não grava logs de erro remotamente e não utiliza ferramentas de analytics de terceiros. Também não vendemos, alugamos ou compartilhamos dados do usuário.</p>
 
-        <h2>3. Permissões do Navegador</h2>
-        <p>A extensão solicita apenas as permissões estritamente necessárias para o seu funcionamento local:</p>
+        <h2>3. Permissões e acesso a sites</h2>
+        <p>A extensão solicita permissões para operar localmente no navegador:</p>
         <ul>
-          <li><strong><code>activeTab</code></strong>: Usada exclusivamente para identificar o domínio da aba atual quando você abre o popup, permitindo filtrar os textos copiados para aquele site específico. O conteúdo da página não é lido, gravado ou transmitido.</li>
+          <li><strong><code>activeTab</code></strong>: Usada para identificar o domínio da aba atual quando você abre o popup, permitindo filtrar os textos salvos para aquele site específico.</li>
           <li><strong><code>storage</code></strong>: Usada para guardar os seus textos de forma persistente no armazenamento interno do seu próprio navegador.</li>
+          <li><strong><code>host_permissions</code> e <code>content_scripts</code> em <code>&lt;all_urls&gt;</code></strong>: Usados para que a extensão funcione em campos editáveis dos sites em que você decidir usá-la. O script de conteúdo roda em páginas compatíveis para detectar gatilhos digitados, como comandos configurados por você, e substituir o texto localmente no próprio campo.</li>
         </ul>
+        <p>Esse acesso amplo existe porque o recurso principal precisa funcionar em diferentes sites, como WhatsApp Web, CRMs, portais jurídicos e formulários web. A extensão não transmite o conteúdo da página, não envia o que você digita para servidores e não monitora navegação para analytics. A leitura necessária para expansão acontece no navegador, no momento da digitação, e é limitada ao funcionamento local do recurso.</p>
 
-        <h2>4. Serviços de Terceiros e Nuvem</h2>
+        <h2>4. Limitações de páginas compatíveis</h2>
+        <p>O Copia e Cola não funciona em páginas internas do navegador, como <code>chrome://</code> ou <code>edge://</code>, nem em ambientes bloqueados pelo próprio site, arquivos locais sem permissão do navegador ou páginas que impeçam scripts de extensão. Nesses casos, o popup e o armazenamento local continuam disponíveis quando o navegador permitir, mas a expansão automática pode não ocorrer.</p>
+
+        <h2>5. Serviços de terceiros e nuvem</h2>
         <p>A versão atual do Copia e Cola opera independentemente de APIs ou provedores de nuvem externos. Toda a funcionalidade de listagem, busca e filtragem opera através de código local no seu dispositivo, e nós nunca venderemos ou compartilharemos seus dados.</p>
 
-        <h2>5. Direitos e Remoção de Dados</h2>
+        <h2>6. Direitos e remoção de dados</h2>
         <p>Como os dados são seus e ficam apenas com você, você tem total controle sobre eles:</p>
         <ul>
           <li><strong>Exclusão:</strong> Você pode excluir itens individualmente ou remover todos os dados de forma permanente desinstalando a extensão ou limpando os dados do navegador.</li>
           <li><strong>Exportação/Importação:</strong> Você pode fazer backup dos seus dados gerando um arquivo JSON local, que fica salvo na sua máquina. Essa ação não transmite o arquivo para a internet.</li>
         </ul>
 
-        <h2>6. Contato e Transparência</h2>
+        <h2>7. Contato e transparência</h2>
         <p>O Copia e Cola é um projeto de código aberto (open-source). O código-fonte completo está disponível para auditoria pública em <a href="https://github.com/CafeSemCafeina/copia-e-cola">github.com/CafeSemCafeina/copia-e-cola</a>. Caso tenha dúvidas sobre privacidade, você pode abrir uma issue pública no repositório.</p>
       </section>
     </main>
