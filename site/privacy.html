@@ -28,22 +28,33 @@
         <p>Última atualização: 20 de junho de 2026.</p>
 
         <h2>Resumo</h2>
-        <p>O Copia e Cola é uma extensão local-first. Ela não exige conta, não usa analytics de terceiros, não sincroniza dados em nuvem e não envia seus textos para servidores.</p>
+        <p>O Copia e Cola é uma extensão com arquitetura <strong>local-first</strong>. Todo o processamento e armazenamento ocorrem exclusivamente no seu dispositivo. Nós não coletamos, não lemos e não temos acesso aos textos que você copia ou salva. Seus dados não saem do seu navegador.</p>
 
-        <h2>Dados armazenados</h2>
-        <p>A extensão salva localmente os textos, títulos, domínios, marcações de fixado e datas operacionais necessárias para listar, buscar, editar, copiar, exportar e importar seus itens.</p>
+        <h2>1. Quais dados são armazenados e onde?</h2>
+        <p>A extensão salva localmente apenas os dados que você insere explicitamente: textos, títulos, informações de domínio (URL), marcações de fixado e datas operacionais. Estes dados são armazenados estritamente no armazenamento local do seu navegador. Nenhum dado é enviado para a nuvem ou servidores externos.</p>
 
-        <h2>Permissões do navegador</h2>
-        <p>A permissão <code>activeTab</code> é usada para identificar o domínio da aba atual quando você abre o popup. A permissão <code>storage</code> é usada para guardar os itens no armazenamento local do navegador.</p>
+        <h2>2. Coleta de Dados e Telemetria</h2>
+        <p>Adotamos uma abordagem de privacidade por design. A extensão não coleta telemetria, não rastreia seu comportamento, não grava logs de erro remotamente e não utiliza ferramentas de analytics de terceiros. Sua navegação permanece 100% privada e anônima.</p>
 
-        <h2>Compartilhamento</h2>
-        <p>O Copia e Cola não vende, compartilha nem transfere seus textos para terceiros. Exportações e importações acontecem por arquivo JSON escolhido por você.</p>
+        <h2>3. Permissões do Navegador</h2>
+        <p>A extensão solicita apenas as permissões estritamente necessárias para o seu funcionamento local:</p>
+        <ul>
+          <li><strong><code>activeTab</code></strong>: Usada exclusivamente para identificar o domínio da aba atual quando você abre o popup, permitindo filtrar os textos copiados para aquele site específico. O conteúdo da página não é lido, gravado ou transmitido.</li>
+          <li><strong><code>storage</code></strong>: Usada para guardar os seus textos de forma persistente no armazenamento interno do seu próprio navegador.</li>
+        </ul>
 
-        <h2>Remoção de dados</h2>
-        <p>Você pode excluir itens pela própria extensão. Também pode remover todos os dados desinstalando a extensão ou limpando os dados de extensão no navegador.</p>
+        <h2>4. Serviços de Terceiros e Nuvem</h2>
+        <p>A versão atual do Copia e Cola opera independentemente de APIs ou provedores de nuvem externos. Toda a funcionalidade de listagem, busca e filtragem opera através de código local no seu dispositivo, e nós nunca venderemos ou compartilharemos seus dados.</p>
 
-        <h2>Contato e código</h2>
-        <p>O código-fonte está disponível em <a href="https://github.com/CafeSemCafeina/copia-e-cola">github.com/CafeSemCafeina/copia-e-cola</a>. Use o repositório para revisar o funcionamento ou abrir uma issue pública.</p>
+        <h2>5. Direitos e Remoção de Dados</h2>
+        <p>Como os dados são seus e ficam apenas com você, você tem total controle sobre eles:</p>
+        <ul>
+          <li><strong>Exclusão:</strong> Você pode excluir itens individualmente ou remover todos os dados de forma permanente desinstalando a extensão ou limpando os dados do navegador.</li>
+          <li><strong>Exportação/Importação:</strong> Você pode fazer backup dos seus dados gerando um arquivo JSON local, que fica salvo na sua máquina. Essa ação não transmite o arquivo para a internet.</li>
+        </ul>
+
+        <h2>6. Contato e Transparência</h2>
+        <p>O Copia e Cola é um projeto de código aberto (open-source). O código-fonte completo está disponível para auditoria pública em <a href="https://github.com/CafeSemCafeina/copia-e-cola">github.com/CafeSemCafeina/copia-e-cola</a>. Caso tenha dúvidas sobre privacidade, você pode abrir uma issue pública no repositório.</p>
       </section>
     </main>
 
