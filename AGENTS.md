@@ -1,5 +1,9 @@
 # AGENTS.md
 
+Data da decisão: 2026-06-20
+Depends on: CONTRIBUTING.md
+Decisor: David Fiocchi
+
 Instruções de comportamento para agentes de IA (Claude Code, Codex e similares) que trabalham neste repositório. Para diretrizes humanas completas, veja [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Idioma
