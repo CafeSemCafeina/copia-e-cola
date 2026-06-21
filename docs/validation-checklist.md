@@ -32,6 +32,7 @@ Use a pasta `dist/` como extensão sem compactação no Chrome ou Edge. Gere ess
 - Na página de opções, validar copiar, editar, fixar/desafixar, excluir, exportar e importar.
 - Abrir `site/index.html` em desktop e mobile e confirmar que não há promessa de sync, IA, nuvem ou colaboração.
 - Conferir a ficha em `store/listing/pt-BR.md`.
+- Conferir `site/privacy.html` e a aba Privacy da Chrome Web Store contra o manifesto real: `activeTab`, `storage`, `host_permissions` em `<all_urls>` e content script em `<all_urls>`.
 - Conferir dimensões dos assets da loja em `store/screenshots/`, `store/promotional/` e `store/icons/`.
 
 ## Validação automatizada local

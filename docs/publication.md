@@ -47,6 +47,18 @@ Também é possível publicar sem build:
 2. Use o zip gerado em `dist/` para upload no painel da Chrome Web Store.
 3. Use `store/listing/pt-BR.md` como ficha.
 4. Use os assets de `store/icons/`, `store/screenshots/` e `store/promotional/`.
-5. Informe a URL pública de `site/privacy.html` como política de privacidade.
+5. Informe `https://cafesemcafeina.github.io/copia-e-cola/privacy.html` como URL pública da política de privacidade.
+
+### Aba Privacy do painel
+
+Preencha a aba de privacidade do dashboard de acordo com o manifesto real da extensão:
+
+- Declarar que a extensão usa `activeTab`, `storage`, `host_permissions: ["<all_urls>"]` e content script em `matches: ["<all_urls>"]`.
+- Explicar que `storage` guarda localmente textos, títulos, domínio/contexto, comando opcional, fixado e datas operacionais.
+- Explicar que `activeTab` identifica o domínio da aba atual quando o popup é aberto.
+- Explicar que o acesso a sites e o content script amplo existem para detectar comandos digitados em campos editáveis de páginas compatíveis e substituir o comando por texto salvo localmente.
+- Declarar que não há conta, nuvem, analytics, telemetria, venda ou compartilhamento de dados.
+- Declarar que a extensão não transmite o conteúdo da página, textos salvos ou textos digitados para servidores.
+- Revisar se as respostas do dashboard continuam compatíveis com a política pública antes de enviar para revisão.
 
 Depois da aprovação na loja, substitua o CTA da landing pelo link público da Chrome Web Store.

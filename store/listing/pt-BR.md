@@ -37,10 +37,13 @@ O que você pode fazer:
 
 Seus dados ficam no storage local do navegador. A extensão não exige conta, não usa nuvem e não envia seus textos para servidores.
 
+Para expansão rápida, a extensão também pode detectar comandos digitados em campos editáveis de páginas compatíveis e substituir o comando pelo texto salvo correspondente. Esse processamento acontece localmente no navegador.
+
 ## Permissões
 
 - `activeTab`: usada para identificar o domínio da aba ativa quando o popup é aberto.
 - `storage`: usada para salvar os textos localmente no navegador.
+- Acesso a sites / `host_permissions` e `content_scripts` em `<all_urls>`: usado para permitir que o recurso local de expansão de comandos funcione em campos editáveis nos sites em que você usa a extensão. O conteúdo da página e os textos digitados não são enviados para servidores.
 
 ## Privacidade
 
@@ -48,6 +51,8 @@ Seus dados ficam no storage local do navegador. A extensão não exige conta, n�
 - Não há sync em nuvem.
 - Não há analytics de terceiros.
 - Não há envio de textos para servidor.
+- Não há venda ou compartilhamento de dados.
+- O script de conteúdo roda em páginas compatíveis para detectar gatilhos digitados e substituir texto localmente, sem transmitir conteúdo.
 - Backup e importação acontecem por arquivo JSON local escolhido pelo usuário.
 
 ## Assets
