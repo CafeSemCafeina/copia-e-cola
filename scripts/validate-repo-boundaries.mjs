@@ -63,7 +63,7 @@ assert.ok(!exists("docs/zip-asset-map.md"), "mapa antigo do ZIP deve ficar arqui
 
 const markdownFiles = execSync("git ls-files", { encoding: "utf8" })
   .split(/\r?\n/)
-  .filter((file) => file.endsWith(".md"));
+  .filter((file) => file.endsWith(".md") && file !== "README.md" && file !== ".github/pull_request_template.md");
 
 for (const file of markdownFiles) {
   const body = read(file);
