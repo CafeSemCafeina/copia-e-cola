@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Copia e Cola</title>
-    <meta name="description" content="Salve textos que você repete e cole de volta com um clique, organizados pelo site em que você está.">
+    <title>Copia e Cola | Mensagens Prontas, Text Expander e Área de Transferência</title>
+    <meta name="description" content="Extensão para salvar textos frequentes, respostas prontas, mensagens de WhatsApp e prompts. Seu gerenciador de área de transferência (clipboard manager) seguro e local-first.">
     <link rel="icon" type="image/png" sizes="128x128" href="assets/icons/icon-128.png">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -24,14 +24,14 @@
     <main id="top">
       <section class="hero">
         <div class="hero__copy">
-          <p class="eyebrow">Clipboard por site · local-first</p>
+          <p class="eyebrow">Clipboard manager por site · local-first</p>
           <h1>Copia e Cola</h1>
-          <p class="subtitle">Salve textos que você repete e cole de volta com um clique, organizados pelo site em que você está.</p>
+          <p class="subtitle">Um gerenciador de área de transferência e expansor de texto local-first. Salve respostas prontas, mensagens frequentes e snippets que você repete e cole de volta com um clique no site certo.</p>
           <div class="actions">
             <a class="button button--primary" href="#instalar">Instalar localmente</a>
             <a class="button button--secondary" href="https://github.com/CafeSemCafeina/copia-e-cola">Ver código no GitHub</a>
           </div>
-          <p class="note">Sem conta, sem nuvem e sem promessa de IA: primeiro, resolver o copiar e colar diário.</p>
+          <p class="note">Sem conta, sem nuvem e focado em privacidade: um aplicativo de produtividade para o seu copiar e colar diário.</p>
         </div>
         <figure class="hero__media">
           <img src="assets/screenshots/contexto-por-site-1280x800.png" alt="Screenshot do Copia e Cola mostrando itens organizados por domínio">
@@ -40,22 +40,22 @@
 
       <section id="como-funciona" class="section">
         <p class="eyebrow">Como funciona</p>
-        <h2>Três passos para reutilizar textos sem misturar contextos</h2>
+        <h2>Três passos para gerenciar snippets e reutilizar textos sem misturar contextos</h2>
         <div class="steps">
           <article>
             <span>1</span>
             <h3>Abra um site</h3>
-            <p>WhatsApp Web, portal jurídico, CRM ou ferramenta interna viram contextos separados.</p>
+            <p>WhatsApp Web, portal jurídico, CRM ou ferramenta interna viram contextos separados no seu clipboard.</p>
           </article>
           <article>
             <span>2</span>
             <h3>Salve em segundos</h3>
-            <p>Cole o texto, dê um título opcional e escolha entre item do site ou item global.</p>
+            <p>Cole o texto ou código, dê um título opcional e salve seu snippet seguro por site ou como item global.</p>
           </article>
           <article>
             <span>3</span>
             <h3>Copie com 1 clique</h3>
-            <p>Busque, fixe e copie respostas, protocolos e modelos curtos quando precisar.</p>
+            <p>Busque, fixe e use como expansor de texto para respostas, protocolos e modelos curtos quando precisar.</p>
           </article>
         </div>
       </section>
@@ -63,20 +63,20 @@
       <section class="section split">
         <div>
           <p class="eyebrow">Casos de uso</p>
-          <h2>Feito para operações que repetem textos todos os dias</h2>
+          <h2>Feito para operações de suporte e tech que repetem textos todos os dias</h2>
         </div>
         <div class="use-cases">
-          <article><strong>WhatsApp Web</strong><span>Respostas de saudação, pedidos de documento e encerramento.</span></article>
-          <article><strong>Portal jurídico</strong><span>Modelos de protocolo, prazos, documentos e orientações.</span></article>
-          <article><strong>CRM e ferramenta interna</strong><span>Textos de follow-up, qualificação e handoff sem trocar de biblioteca.</span></article>
+          <article><strong>WhatsApp Web</strong><span>Mensagens de saudação, respostas prontas, pedidos de documento e encerramento.</span></article>
+          <article><strong>Portal jurídico e PJe</strong><span>Modelos de protocolo, textos frequentes, andamentos e orientações legais.</span></article>
+          <article><strong>CRM e ferramenta interna</strong><span>Atalhos de texto para follow-up, qualificação e handoff sem trocar de aba.</span></article>
         </div>
       </section>
 
       <section id="privacidade" class="section privacy">
         <div>
-          <p class="eyebrow">Privacidade</p>
-          <h2>Seus dados ficam no navegador</h2>
-          <p>A extensão usa apenas <code>activeTab</code> para identificar o domínio da aba atual e <code>storage</code> para salvar seus itens localmente. Backup e importação acontecem por JSON escolhido por você.</p>
+          <p class="eyebrow">Privacidade Local-First</p>
+          <h2>Seus dados ficam offline no navegador</h2>
+          <p>A extensão funciona como um expansor de texto offline. Ela usa apenas <code>activeTab</code> para identificar o domínio da aba atual e <code>storage</code> para o gerenciamento seguro de snippets localmente. Backup e importação acontecem por JSON escolhido por você.</p>
         </div>
         <img src="assets/screenshots/local-first-1280x800.png" alt="Screenshot destacando funcionamento local-first">
       </section>
@@ -104,8 +104,12 @@
       <section id="faq" class="section faq">
         <p class="eyebrow">FAQ</p>
         <details open>
+          <summary>É um text expander ou clipboard manager?</summary>
+          <p>Os dois. O Copia e Cola atua como um clipboard manager contextual, agrupando seus textos por domínio, e permite usá-los como modelos de resposta rápida com um clique, semelhante a um text expander local.</p>
+        </details>
+        <details>
           <summary>O Copia e Cola sincroniza entre computadores?</summary>
-          <p>Não. O MVP é local-first. Para levar dados para outro perfil, use exportação e importação em JSON.</p>
+          <p>Não. A ferramenta é local-first e offline. Para levar dados para outro perfil, use exportação e importação em JSON.</p>
         </details>
         <details>
           <summary>A extensão envia meus textos para servidores?</summary>
