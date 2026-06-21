@@ -1,8 +1,6 @@
 # 📋 Copia e Cola
 
-Data da decisão: 2026-06-20
-Depends on: docs/README.md; docs/repository-boundaries.md
-Decisor: David Fiocchi
+_Última atualização: 2026-06-20_ • [Site Oficial (GitHub Pages)](https://cafesemcafeina.github.io/copia-e-cola)
 
 <p align="center">
   <img src="store/promotional/marquee-1440x560.png" alt="Copia e Cola - Banner" width="100%">

@@ -1,7 +1,3 @@
-Data da decisão: 2026-06-21
-Depends on: N/A
-Decisor: David Fiocchi
-
 # Pull Request / Solicitação de Mudança
 
 ## Summary / Resumo
