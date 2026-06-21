@@ -1,5 +1,9 @@
 # 📋 Copia e Cola
 
+Data da decisão: 2026-06-20
+Depends on: docs/README.md; docs/repository-boundaries.md
+Decisor: David Fiocchi
+
 <p align="center">
   <img src="store/promotional/marquee-1440x560.png" alt="Copia e Cola - Banner" width="100%">
 </p>
@@ -62,7 +66,7 @@ Projeto construído em **React**, focado em **TypeScript**, e empacotado pelo **
 - 📂 `docs/` e `specs/`: PRD, ADRs (Decisões de Arquitetura), fluxos de validação e roadmap do produto.
 - 📂 `site/`: Landing page oficial.
 
-> 📝 **Nota:** O backend cloud oficial (para features avançadas como sync, IA, permissões em time) vive em um projeto privado à parte.
+> 📝 **Nota:** O backend cloud oficial (para features avançadas como sync, IA, permissões em time) vive em um projeto privado à parte (copia-e-cola-cloud).
 
 ---
 
@@ -102,4 +106,4 @@ npm run chrome:smoke
 
 Este código-fonte é distribuído sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para detalhes.
 
-⚠️ **Atenção:** Embora o código seja livre, a marca **Copia e Cola**, logotipo, screenshots e identidade visual do `design-system/` **não concedem** direito de uso comercial em forks ou uploads de lojas terceiras. Para mais contexto sobre limites de uso de marca, consulte o documento de [TRADEMARKS.md](TRADEMARKS.md).
+⚠️ **Atenção:** Embora o código seja livre, os Assets de marca (logotipo, screenshots e identidade visual do `design-system/`) **não concedem** direito de uso comercial em forks ou uploads de lojas terceiras. Para mais contexto sobre limites de uso de marca, consulte o documento [TRADEMARKS.md](TRADEMARKS.md).
